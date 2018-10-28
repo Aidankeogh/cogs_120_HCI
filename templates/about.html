@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+  {% for post in backend.posts %}
+    <h1>AMANDA IS A BUTT {{ post }}</h1>
+  {% endfor %}
+{% endblock %}

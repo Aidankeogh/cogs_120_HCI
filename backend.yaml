@@ -1,0 +1,15 @@
+events:
+  xyz:
+    title: Beer + burgers
+    host: jane_doe
+    attendees: [aidan, amanda, kelly]
+    date: 29-10-18
+    location: Chicago Fire Grill
+    attire: casual
+
+users:
+  jane_doe:
+    name: Jane Doe
+    email: jane_doe@generic.com
+    hosting: [event1, event2]
+    attending: [event3, event4]
