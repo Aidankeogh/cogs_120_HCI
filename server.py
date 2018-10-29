@@ -32,9 +32,8 @@ def event():
 def edit_event():
     return render_template('home.html', backend = backend, event = backend['events']['xyz'])
 
-@app.route('/percy')
-@app.route('/jane_doe')
-def user():
+@app.route('/<username>')
+def user(username):
     return render_template('profile.html', backend = backend, event = backend['users']['jane_doe'])
 
 
