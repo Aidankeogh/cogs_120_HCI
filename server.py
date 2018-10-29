@@ -37,5 +37,5 @@ def user(username):
     return render_template('profile.html', backend = backend, event = backend['users']['jane_doe'])
 
 
-
-app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True,host='0.0.0.0')
