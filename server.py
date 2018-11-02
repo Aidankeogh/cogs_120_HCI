@@ -30,11 +30,20 @@ def event():
 
 @app.route('/xyz/edit')
 def edit_event():
-    return render_template('home.html', backend = backend, event = backend['events']['xyz'])
+    return render_template('event.html', backend = backend, event = backend['events']['xyz'])
 
-@app.route('/<username>')
-def user(username):
-    return render_template('profile.html', backend = backend, event = backend['users']['jane_doe'])
+@app.route('/create')
+def create_event():
+    return render_template('create_event.html', backend = backend)
+
+@app.route('/edit_profile')
+def edit_profile():
+    return render_template('edit_profile.html', backend = backend)
+
+@app.route('/jane_doe')
+def other_profile():
+    return render_template('other_profile.html', backend = backend)
+
 
 
 if __name__ == "__main__":
