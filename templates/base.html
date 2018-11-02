@@ -4,39 +4,41 @@
 
 <!-- Adding custom styling to style.css -->
 {% block styles %}
-
 {{super()}}
 <link rel="stylesheet"
       href="{{url_for('.static', filename='style.css')}}">
 {% endblock %}
 
 {% block navbar %}
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
+<nav class="navbar navbar-default" role="navigation" style="outline: none;">
+  <div class="container-fluid navbar-container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
+    <div class="navbar-header" stlye="min-width: 100%;">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">
-        <span class="glyphicon glyphicon-home" aria-hidden="true"> </span>
+      <a class="navbar-brand navbar-txt" href="/">
+        <strong>Triton Pub</strong>
       </a>
-      <a class="navbar-brand" href="/">
-        Happy hour!
+      <a class="navbar-brand navbar-right" href="/">
+        <span class="glyphicon glyphicon-home navbar-icon" aria-hidden="true"> </span>
       </a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse pull-right navbar-icon" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/login">Login</a></li>
-        <li><a href="/about">About</a></li>
+        <li><a href="/login" class="navbar-txt"><strong>Logout</strong></a></li>
+        <li><a href="/about" class="navbar-txt"><strong>About</strong></a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
+  <div class="jumbotron navbar-jumbotron" style="width: 100%;">
+  </div>
 </nav>
+
 {% endblock %}
 
 {% block content %}

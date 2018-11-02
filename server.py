@@ -16,7 +16,7 @@ with open('backend.yaml', 'r') as f:
 def home():
     return render_template('home.html', backend = backend)
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     return render_template('login.html', backend = backend)
 
@@ -38,4 +38,4 @@ def user(username):
 
 
 if __name__ == "__main__":
-    app.run(debug=True,host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0')
