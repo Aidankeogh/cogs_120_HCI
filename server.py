@@ -32,9 +32,9 @@ def event():
 def edit_event():
     return render_template('event.html', backend = backend, event = backend['events']['xyz'])
 
-@app.route('/create')
+@app.route('/new_event')
 def create_event():
-    return render_template('create_event.html', backend = backend)
+    return render_template('new_event.html', backend = backend)
 
 @app.route('/edit_profile')
 def edit_profile():
