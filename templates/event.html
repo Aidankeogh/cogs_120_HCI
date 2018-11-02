@@ -108,7 +108,8 @@
 																	 <div class="media user-following">
 																			 <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="User Avatar" class="media-object pull-left">
 																			 <div class="media-body">
-																					 <a href="/jane_doe">Antonius<br><span class="text-muted username">@mrantonius</span></a>																			 </div>
+																					 <a href="/jane_doe">Antonius<br><span class="text-muted username">@mrantonius</span></a>
+																				 </div>
 																	 </div>
 																	 <button type="button" class="btn btn-default">See all attendees</button>
 																 </br>
@@ -121,8 +122,13 @@
                               <tr class="highlight">
                                  <td class="field">&nbsp;</td>
                                  <td class="p-t-10 p-b-10">
-                                    <button type="submit" class="btn btn-primary width-150">Share</button>
-																		<button type="submit" class="btn btn-primary width-150">Copy Link</button>
+																	 <div class="btn-toolbar pull-right activity-actions">
+                                     <button type="button" class="btn btn-md btn-toggle-following width-150 pull-left"><span><span class="glyphicon glyphicon-share" style="vertical-align: center;"></span></span><a href="/xyz"><strong> Share</strong></a></button>
+                                     <button type="button" class="btn btn-md btn-toggle-hosting width-150 pull-left"><span><span class="glyphicon glyphicon-copy"></span><strong> Copy Link</strong></span></button>&nbsp;
+                                   </div>
+
+																	 <a href="/new_event"><button type="submit" class="btn btn-toggle-info width-150">Update</button></a>
+                                  <button type="submit" class="btn btn-danger width-150 m-l-5">Delete Event</button>
                                 </td>
                               </tr>
                            </tbody>
