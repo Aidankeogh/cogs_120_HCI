@@ -153,7 +153,7 @@ html,body{
 	    border: 0;
 	    background: transparent;
 			font-size: 1.5em;
-			color: #C69214;
+			color: lightgrey;
 		}
 
 		.btn-toggle-info {
@@ -174,6 +174,11 @@ html,body{
 
 		.btn-toggle-following {
 		  background-color: #5cb85c;
+		  color: #fff;
+		}
+
+		.btn-toggle-hosting {
+		  background-color: #C69214;
 		  color: #fff;
 		}
 		/*
@@ -394,5 +399,5 @@ html,body{
 		  border-bottom: 4px solid transparent;
 		}
 		.nav-pills-custom-minimal.custom-minimal-bottom > li.active > a, .nav-pills-custom-minimal.custom-minimal-bottom > li.active > a:hover, .nav-pills-custom-minimal.custom-minimal-bottom > li.active > a:focus {
-		  border-bottom-color: #94c632;
+		  border-bottom-color: #182B49;
 		}
