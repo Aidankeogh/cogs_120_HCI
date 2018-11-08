@@ -4,8 +4,14 @@ html,body{
 			background-color: white !important;
 		}
 
+		.badge_icon{
+			font-size: 15px;
+			top:5px;
+			margin-left:3px;
+			margin-right:2px;
+		}
 		.Friend{
-			color: #cac827;
+			color: #ca2795;
 			font-size: 20px;
 			top:5px;
 		}

@@ -9,11 +9,11 @@
         <br>
         {{attendees}} <span class="glyphicon glyphicon-user" title="{{attendees}} attending"> </span>
         {% if friends > 0 %}
-          | {{friends}} <span class="glyphicon glyphicon-star Friend" title="{{friends}} friends"> </span>
+          | {{friends}} <span class="glyphicon glyphicon-heart-empty Friend" title="{{friends}} friends"> </span>
         {% endif %}
         {% for i in range(4) %}
           {% if badge_counts[i] > 0 %}
-            | {{badge_counts[i]}} <span class="glyphicon glyphicon-grain {{badges[i]}}" title="{{badge_counts[i]}} from {{badges[i]}}"> </span>
+            | {{badge_counts[i]}} <span class="glyphicon glyphicon-tag {{badges[i]}}" title="{{badge_counts[i]}} from {{badges[i]}}"> </span>
           {% endif %}
         {% endfor %}
     </div>

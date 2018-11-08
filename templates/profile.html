@@ -38,7 +38,7 @@
                         <h3>Badges</h3>
                         {% for i in range(4) %}
                           {% if backend.users[user].badges[i]%}
-                          <span class="glyphicon glyphicon-grain
+                          <span class="glyphicon glyphicon-tag
                           {{backend.badges[i]}}"
                           title=" {{backend.badges[i]}}"></span>
                           {{backend.users[user].badges[i]}}
@@ -79,8 +79,27 @@
                           <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown">Filter by &nbsp;<span class="caret"></span></button>
                           <ul class="dropdown-menu">
                             <!--<input class="form-control" id="myInput" type="text" placeholder="Search..">-->
-                            <li><a href="#">most attendees</a></li>
-                            <li><a href="#">upcoming</a></li>
+                            <li><a href="#">
+                              <span class="glyphicon glyphicon-user badge_icon"> </span>
+                              Total attendees</a></li>
+                            <li><a href="#">
+                              <span class="glyphicon glyphicon-heart-empty Friend"> </span>
+                              Friends attending</a></li>
+                            <li><a href="#">
+                              <span class="glyphicon glyphicon-tag Faculty"> </span>
+                              Faculty attending</a></li>
+                            <li><a href="#">
+                              <span class="glyphicon glyphicon-tag Research"> </span>
+                              Researchers attending</a></li>
+                            <li><a href="#">
+                              <span class="glyphicon glyphicon-tag Clubs"> </span>
+                              Club leaders attending</a></li>
+                            <li><a href="#">
+                              <span class="glyphicon glyphicon-tag Industry"> </span>
+                              Industry members attending</a></li>
+                            <li><a href="#">
+                              <span class="glyphicon glyphicon-time badge_icon"> </span>
+                              Most recent</a></li>
                           </ul>
                         </div>
                       </div>

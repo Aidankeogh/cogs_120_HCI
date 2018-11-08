@@ -1,10 +1,10 @@
 <div class="media user-following">
     <img src="{{ user.picture }}" alt="User Avatar" class="media-object pull-left">
     <div class="media-body">
-        <a href="/{{ user.link }}">{{ user.name }}</a>  - 
+        <a href="/{{ user.link }}">{{ user.name }}</a>  -
         {% for i in range(4) %}
           {% if user.badges[i]%}
-          <span class="glyphicon glyphicon-grain
+          <span class="glyphicon glyphicon-tag
           {{badges[i]}}"
           title=" {{user.badges[i]}}"></span>
           {% endif %}

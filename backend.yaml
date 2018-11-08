@@ -70,7 +70,7 @@ users:
     name: Amanda Smith
     link: amanda
     email: amand@s.mith
-    badges: [Math club president,Math club vice president,Math club treasurer,~]
+    badges: [ ~, ~, Math club president, Recruiter at GAP]
     friends: [percy,jane_doe]
     about: I am a dork.
     picture: https://bootdey.com/img/Content/avatar/avatar3.png
