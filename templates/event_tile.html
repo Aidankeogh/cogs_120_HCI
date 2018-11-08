@@ -18,8 +18,6 @@
         {% endfor %}
     </div>
     <div class="btn-toolbar pull-right activity-actions">
-      <button type="button" class="btn btn-md btn-toggle-info pull-right"><span><span class="glyphicon glyphicon-arrow-right" style="vertical-align: center;"></span></span><a href="/{{ event.link }}"><strong> View Event</strong></a></button>
-
       {% if event.hosting %}
         <button type="button" class="btn btn-md btn-toggle-hosting pull-right"><span><span class="glyphicon glyphicon-check"></span><strong> Hosting</strong></span></button>&nbsp;
       {% else %}

@@ -36,11 +36,9 @@ def edit_profile():
 def other_profile(something):
     if something in backend['users']:
         user = something
-        get_tiles(user)
         return render_template('profile.html', backend = backend, user=user)
     elif something in backend['events'] :
         event = something
-        #get_tiles(user)
         return render_template('event.html', backend = backend, event=backend['events'][event])
     else:
         return render_template('404')

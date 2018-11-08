@@ -1,4 +1,4 @@
-user: percy
+user: amanda
 badges: [Faculty, Research, Clubs, Industry]
 events:
   xyz:
@@ -61,7 +61,7 @@ users:
     name: Percy
     link: percy
     email: percy@pal.dog
-    badges: [~,~,~,Service dog]
+    badges: [~,~,dog club,~]
     friends: [john_doe,amanda]
     about: I am a dog.
     picture: /static/percy.jpg

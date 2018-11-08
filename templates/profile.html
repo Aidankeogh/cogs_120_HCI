@@ -21,36 +21,36 @@
             <div class="col-md-4">
                 <div class="profile-info-left">
                     <div class="text-center">
-                        <img src="{{ backend.users[user].picture }}" alt="Avatar" class="avatar img-circle" style="border: 0.35em groove #FFCD00;">
+                        <img id="profile_pic" src="{{ backend.users[user].picture }}" alt="Avatar" class="avatar img-circle" style="border: 0.35em groove #FFCD00;">
 
                         <h2>{% if user == backend.user %}Hello, {% endif %}{{ backend.users[user].name }}</h2>
                     </div>
                     {% if user == backend.user %}
                       <div class="action-buttons center-block" style="width: 50% !important;">
-                        <a href="/edit_profile" class="btn btn-primary btn-block btn-md center-block" style="background-color: #182B49 !important;"><strong>Update Info</strong></a>
+                        <button class="btn btn-primary btn-block btn-md center-block" id="edit_profile" style="background-color: #182B49 !important;"><strong>Update Info</strong></a>
                       </div>
                     {% endif %}
-                    <div class="section">
+                    <div class="section" id="about_me">
                         <h3>About Me</h3>
                         <p>{{ backend.users[user].about }}</p>
                     </div>
-                    <div class="section">
+                    <div class="section" id="badges">
                         <h3>Badges</h3>
                         {% for i in range(4) %}
                           {% if backend.users[user].badges[i]%}
                           <span class="glyphicon glyphicon-tag
                           {{backend.badges[i]}}"
                           title=" {{backend.badges[i]}}"></span>
-                          {{backend.users[user].badges[i]}}
+                          <span>{{backend.users[user].badges[i]}}</span>
                           <br>
                           {% endif %}
                         {% endfor %}
                     </div>
-                    <div class="section">
+                    <div class="section" id="contact_info">
                         <h3>Contact Info</h3>
                         <ul class="list-unstyled list-social">
-                            <li><span class="glyphicon glyphicon-user"></span> @{{backend.users[user].name}} </li>
-                            <li><span class="glyphicon glyphicon-envelope"></span> {{ backend.users[user].email }} </li>
+                            <li><span class="glyphicon glyphicon-user"></span> <span id="username">@{{backend.users[user].name}}</span> </li>
+                            <li><span class="glyphicon glyphicon-envelope"></span> <span id="email">{{ backend.users[user].email }} <span> </li>
                         </ul>
                     </div>
                 </div>
@@ -154,5 +154,58 @@
 </div>
   </body>
 
+<script>
+$(document).ready(function(){
+    $("#edit_profile").click(function(){
+
+      $("#edit_profile").replaceWith(`<button onclick="location.reload();" class="btn btn-primary btn-block btn-md center-block" id="edit_profile" style="background-color: #e4dfff; color: #333; !important;"><strong>Submit Changes</strong></a>`);
+
+      $("#about_me p").replaceWith(`
+        <div class="form-group">
+        <textarea class="form-control" id="exampleFormControlTextarea1"
+        rows="3">` + $("#about_me p").text() + `</textarea> </div>`);
+
+      $("#badges").html(`
+        <h3>Badges</h3>
+        <div class="form-group">
+        <span class="glyphicon glyphicon-tag Faculty"></span><span>  Faculty</span>
+        <input class="form-control form-control-sm" type="text"
+        placeholder="E.G. Professor for COGS 120"></textarea>
+        </div>
+        <div class="form-group">
+        <span class="glyphicon glyphicon-tag Research"></span><span>  Research</span>
+        <input class="form-control form-control-sm" type="text"
+        placeholder="E.G. Data science graduate student"></textarea>
+        </div>
+        <div class="form-group">
+        <span class="glyphicon glyphicon-tag Clubs"></span><span>  Clubs</span>
+        <input class="form-control form-control-sm" type="text"
+        placeholder="E.G. Leader of chess club"></textarea>
+        </div>
+        <div class="form-group">
+        <span class="glyphicon glyphicon-tag Industry"></span><span>  Industry</span>
+        <input class="form-control form-control-sm" type="text"
+        placeholder="E.G. Recruiter for Microsoft"></textarea>
+        </div>
+        `);
+      $("#username").replaceWith(`
+        <div class="form-group">
+        <input class="form-control form-control-sm" type="text"
+        placeholder="` + $("#username").text() + `"></textarea> </div>`);
+
+      $("#profile_pic").replaceWith(`
+        <a href="#"><img id="profile_pic" src="/static/add_img.ico" alt="Avatar" class="avatar img-circle" style="border: 0.35em groove #FFCD00;"></a>
+        `);
+
+      $("#email").replaceWith(`
+        <div class="form-group">
+        <input class="form-control form-control-sm" type="email"
+        placeholder="` + $("#email").text() + `"></textarea> </div>`);
+      });
+    });
+    $("#contact_info").click(function(){
+
+});
+</script>
 
 {% endblock %}
