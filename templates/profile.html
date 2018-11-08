@@ -21,27 +21,36 @@
             <div class="col-md-4">
                 <div class="profile-info-left">
                     <div class="text-center">
-                        <img src="/static/percy.jpg" alt="Avatar" class="avatar img-circle" style="border: 0.35em groove #FFCD00;">
-                        <h2>Hello, Percy</h2>
+                        <img src="{{ backend.users[user].picture }}" alt="Avatar" class="avatar img-circle" style="border: 0.35em groove #FFCD00;">
+
+                        <h2>{% if user == backend.user %}Hello, {% endif %}{{ backend.users[user].name }}</h2>
                     </div>
-                    <div class="action-buttons center-block" style="width: 50% !important;">
-                      <a href="/edit_profile" class="btn btn-primary btn-block btn-md center-block" style="background-color: #182B49 !important;"><strong>Update Info</strong></a>
-                    </div>
+                    {% if user == backend.user %}
+                      <div class="action-buttons center-block" style="width: 50% !important;">
+                        <a href="/edit_profile" class="btn btn-primary btn-block btn-md center-block" style="background-color: #182B49 !important;"><strong>Update Info</strong></a>
+                      </div>
+                    {% endif %}
                     <div class="section">
                         <h3>About Me</h3>
-                        <p>I am a dog.</p>
+                        <p>{{ backend.users[user].about }}</p>
                     </div>
                     <div class="section">
-                        <h3>Statistics</h3>
-                        <p><span class="badge">3</span>&nbsp;All Events</p>
-                        <p><span class="badge">2</span>&nbsp;Attending</p>
-                        <p><span class="badge">1</span>&nbsp;Hosting</p>
+                        <h3>Badges</h3>
+                        {% for i in range(4) %}
+                          {% if backend.users[user].badges[i]%}
+                          <span class="glyphicon glyphicon-grain
+                          {{backend.badges[i]}}"
+                          title=" {{backend.badges[i]}}"></span>
+                          {{backend.users[user].badges[i]}}
+                          <br>
+                          {% endif %}
+                        {% endfor %}
                     </div>
                     <div class="section">
                         <h3>Contact Info</h3>
                         <ul class="list-unstyled list-social">
-                            <li><span class="glyphicon glyphicon-user"></span> @percythedog</li>
-                            <li><span class="glyphicon glyphicon-envelope"></span> percy@pal.dog</li>
+                            <li><span class="glyphicon glyphicon-user"></span> @{{backend.users[user].name}} </li>
+                            <li><span class="glyphicon glyphicon-envelope"></span> {{ backend.users[user].email }} </li>
                         </ul>
                     </div>
                 </div>
@@ -50,13 +59,21 @@
 
             <div class="col-md-8">
                 <div class="profile-info-right">
-                  <h1 class="text-center">Your Events</h1>
+
+                  {% if user == backend.user %}
+                    <h1 class="text-center">Your Events</h1>
+                  {% else %}
+                    <h1 class="text-center">{{backend.users[user].name}}'s Events</h1>
+                  {% endif %}
+
                 </br>
                   <div class="action-buttons" style="margin: auto; max-width: 300px;">
                     <div class="row">
+                    {% if user == backend.user %}
                       <div class="col-xs-6" style="width: 50% !important;">
                         <a href="/new_event" class="btn btn-success btn-lg btn-block"><strong>New Event</strong></a>
                       </div>
+                    {% endif %}
                       <div class="col-xs-6">
                         <div class="dropdown">
                           <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown">Filter by &nbsp;<span class="caret"></span></button>
@@ -78,50 +95,9 @@
                     <div class="tab-content">
                         <!-- activities -->
                         <div class="tab-pane fade in active" id="all">
-                              <div class="media activity-item">
-                                  <a href="/jane_doe" class="pull-left">
-                                      <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Avatar" class="media-object avatar">
-                                  </a>
-                                  <div class="media-body">
-                                      <p class="activity-title"><a href="/xyz">Burgers n Beer</a> at <a href="#">Chicago Fire and Grill</a></p>
-                                      <small class="text-muted">Today 05:30 pm - 02.05.2014</small>
-                                  </div>
-
-                                  <div class="btn-toolbar pull-right activity-actions">
-                                    <button type="button" class="btn btn-md btn-toggle-info pull-right"><span><span class="glyphicon glyphicon-arrow-right" style="vertical-align: center;"></span></span><a href="/xyz"><strong> View Event</strong></a></button>
-                                    <button type="button" class="btn btn-md btn-toggle-following pull-right"><span><span class="glyphicon glyphicon-check"></span><strong> Going</strong></span></button>&nbsp;
-                                  </div>
-                              </div>
-                          </br>
-                            <div class="media activity-item">
-                                <a href="/jane_doe" class="pull-left">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="Avatar" class="media-object avatar">
-                                </a>
-                                <div class="media-body">
-                                    <p class="activity-title"><a href="/xyz">Engineering Wine Society (EWS)</a> at <a href="#">Rock Bottom</a></p>
-                                    <small class="text-muted">Tomorrow 08:00 pm - 02.06.2014</small>
-                                </div>
-
-                                <div class="btn-toolbar pull-right activity-actions">
-                                  <button type="button" class="btn btn-md btn-toggle-info pull-right"><span><span class="glyphicon glyphicon-arrow-right" style="vertical-align: center;"></span></span><a href="/xyz"><strong> View Event</strong></a></button>
-                                  <button type="button" class="btn btn-md btn-toggle-following pull-right"><span><span class="glyphicon glyphicon-check"></span><strong> Going</strong></span></button>&nbsp;
-                                </div>
-                            </div>
-                          </br>
-                            <div class="media activity-item">
-                                <a href="/jane_doe" class="pull-left">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Avatar" class="media-object avatar">
-                                </a>
-                                <div class="media-body">
-                                    <p class="activity-title"><a href="/xyz">Cocktails</a> at <a href="#">BJs'</a></p>
-                                    <small class="text-muted">Next Tuesday 04:30 pm - 02.10.2014</small>
-                                </div>
-
-                                <div class="btn-toolbar pull-right activity-actions">
-                                  <button type="button" class="btn btn-md btn-toggle-info pull-right"><span><span class="glyphicon glyphicon-arrow-right" style="vertical-align: center;"></span></span><a href="/xyz"><strong> View Event</strong></a></button>
-                                  <button type="button" class="btn btn-md btn-toggle-hosting pull-right"><span><span class="glyphicon glyphicon-check"></span><strong> Hosting</strong></span></button>&nbsp;
-                                </div>
-                            </div>
+                            {% for event in backend.users[user].events %}
+                              {{ backend.events[event].event_tile | safe}}
+                            {% endfor %}
                           </br>
                         </br>
                             <button type="button" class="btn btn-default center-block">Load more events</button>
@@ -129,34 +105,11 @@
                         <!-- end activities -->
                         <!-- followers -->
                         <div class="tab-pane fade" id="followers">
-                          <div class="media activity-item">
-                              <a href="#" class="pull-left">
-                                  <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Avatar" class="media-object avatar">
-                              </a>
-                              <div class="media-body">
-                                  <p class="activity-title"><a href="/xyz">Burgers n Beer</a> at <a href="#">Chicago Fire and Grill</a></p>
-                                  <small class="text-muted">Today 05:30 pm - 02.05.2014</small>
-                              </div>
-                              <div class="btn-toolbar pull-right activity-actions">
-                                <button type="button" class="btn btn-md btn-toggle-info pull-right"><span><span class="glyphicon glyphicon-arrow-right" style="vertical-align: center;"></span></span><a href="/xyz"><strong> View Event</strong></a></button>
-                                <button type="button" class="btn btn-md btn-toggle-following pull-right"><span><span class="glyphicon glyphicon-check"></span><strong> Going</strong></span></button>&nbsp;
-                              </div>
-                          </div>
-                        </br>
-                          <div class="media activity-item">
-                              <a href="#" class="pull-left">
-                                  <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="Avatar" class="media-object avatar">
-                              </a>
-                              <div class="media-body">
-                                  <p class="activity-title"><a href="/xyz">Engineering Wine Society (EWS)</a> at <a href="#">Rock Bottom</a></p>
-                                  <small class="text-muted">Tomorrow 08:00 pm - 02.06.2014</small>
-                              </div>
-
-                              <div class="btn-toolbar pull-right activity-actions">
-                                <button type="button" class="btn btn-md btn-toggle-info pull-right"><span><span class="glyphicon glyphicon-arrow-right" style="vertical-align: center;"></span></span><a href="/xyz"><strong> View Event</strong></a></button>
-                                <button type="button" class="btn btn-md btn-toggle-following pull-right"><span><span class="glyphicon glyphicon-check"></span><strong> Going</strong></span></button>&nbsp;
-                              </div>
-                          </div>
+                          {% for event in backend.users[user].events %}
+                            {% if not backend.events[event].hosting %}
+                              {{ backend.events[event].event_tile | safe}}
+                            {% endif %}
+                          {% endfor %}
                         </br>
                       </br>
                           <button type="button" class="btn btn-default center-block">Load more events</button>
@@ -164,20 +117,11 @@
                         <!-- end followers -->
                         <!-- following -->
                         <div class="tab-pane fade" id="following">
-                          <div class="media activity-item">
-                              <a href="#" class="pull-left">
-                                  <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Avatar" class="media-object avatar">
-                              </a>
-                              <div class="media-body">
-                                  <p class="activity-title">Cocktails at <a href="#">BJs'</a></p>
-                                  <small class="text-muted">Next Tuesday 04:30 pm - 02.10.2014</small>
-                              </div>
-
-                              <div class="btn-toolbar pull-right activity-actions">
-                                <button type="button" class="btn btn-md btn-toggle-info pull-right"><span><span class="glyphicon glyphicon-arrow-right" style="vertical-align: center;"></span></span><a href="/xyz"><strong> View Event</strong></a></button>
-                                <button type="button" class="btn btn-md btn-toggle-hosting pull-right"><span><span class="glyphicon glyphicon-check"></span><strong> Hosting</strong></span></button>&nbsp;
-                              </div>
-                          </div>
+                          {% for event in backend.users[user].events %}
+                            {% if backend.events[event].hosting %}
+                              {{ backend.events[event].event_tile | safe}}
+                            {% endif %}
+                          {% endfor %}
                         </br>
                       </br>
                           <button type="button" class="btn btn-default center-block">Load more events</button>
@@ -189,43 +133,6 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!--
-     	<div class="container">
-        <div class="jumbotron img-responsive">
-          <h1 class="page-header">Triton Pub</h1>
-      		<div class="d-flex justify-content-center h-100">
-      				<div class="image_inner_container">
-      					<img src="/static/percy.jpg" class="rounded float-left img-responsive">
-      			  </div>
-    		  </div>
-        </div>
-        {% block createbutton %}
-        {% endblock %}
-
-        {% block eventlist %}
-        {% endblock %}
-      </div>
-    -->
   </body>
 
 

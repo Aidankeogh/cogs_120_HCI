@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
+from backend import backend, get_tiles
 import yaml
-
 
 # Check out flask cheat sheet here
 # https://s3.us-east-2.amazonaws.com/prettyprinted/flask_cheatsheet.pdf
@@ -9,12 +9,12 @@ import yaml
 app = Flask(__name__)
 Bootstrap(app)
 
-with open('backend.yaml', 'r') as f:
-    backend = yaml.load(f)
+
 
 @app.route('/')
 def home():
-    return render_template('home.html', backend = backend)
+    get_tiles(backend['user'])
+    return render_template('home.html', backend = backend, user=backend['user'])
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -24,14 +24,6 @@ def login():
 def about():
     return render_template('about.html', backend = backend)
 
-@app.route('/xyz')
-def event():
-    return render_template('event.html', backend = backend, event = backend['events']['xyz'])
-
-@app.route('/xyz/edit')
-def edit_event():
-    return render_template('event.html', backend = backend, event = backend['events']['xyz'])
-
 @app.route('/new_event')
 def create_event():
     return render_template('new_event.html', backend = backend)
@@ -40,9 +32,18 @@ def create_event():
 def edit_profile():
     return render_template('edit_profile.html', backend = backend)
 
-@app.route('/jane_doe')
-def other_profile():
-    return render_template('other_profile.html', backend = backend)
+@app.route('/<something>')
+def other_profile(something):
+    if something in backend['users']:
+        user = something
+        get_tiles(user)
+        return render_template('profile.html', backend = backend, user=user)
+    elif something in backend['events'] :
+        event = something
+        #get_tiles(user)
+        return render_template('event.html', backend = backend, event=backend['events'][event])
+    else:
+        return render_template('404')
 
 
 

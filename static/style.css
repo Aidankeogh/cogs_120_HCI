@@ -4,6 +4,32 @@ html,body{
 			background-color: white !important;
 		}
 
+		.Friend{
+			color: #cac827;
+			font-size: 20px;
+			top:5px;
+		}
+		.Faculty{
+			color: #ca272c;
+			font-size: 20px;
+			top:5px;
+		}
+		.Research{
+			color: #45ca27;
+			font-size: 20px;
+			top:5px;
+		}
+		.Clubs{
+			color: #27b1ca;
+			font-size: 20px;
+			top:5px;
+		}
+		.Industry{
+			color: #695d5e;
+			font-size: 20px;
+			top:5px;
+		}
+
 		.profile-info-right h1 {
 			font-family: "josefinslab-semibold";
 			margin-bottom: 30px;
@@ -118,7 +144,7 @@ html,body{
 		.user-follower,
 		.user-following {
 		  position: relative;
-		  margin-bottom: 40px;
+		  margin-bottom: 10px;
 		}
 		.user-follower img,
 		.user-following img {

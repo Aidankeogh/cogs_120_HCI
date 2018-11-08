@@ -17,7 +17,7 @@
 			href="{{url_for('.static', filename='style.css')}}">
 {% endblock %}
 
-{% block title %}Event xyz{% endblock %}
+{% block title %}Event {{event.title}}{% endblock %}
 
 {% block content %}
 
@@ -39,8 +39,8 @@
                   <div class="profile-header-content">
                      <!-- BEGIN profile-header-info -->
                      <div class="profile-header-info">
-                        <h3 class="m-t-10 m-b-5"><strong>Burgers n Beer</strong></h3>
-                        <p class="m-b-10">Today at 5:30 pm</p>
+                        <h3 class="m-t-10 m-b-5"><strong>{{ event.title }}</strong></h3>
+                        <p class="m-b-10">{{ event.date }}</p>
                      </div>
                      <!-- END profile-header-info -->
                   </div>
@@ -69,13 +69,13 @@
 																<tr>
                                  <td class="field">Where</td>
                                  <td>
-																	 <a href="#">Chicago Fire and Grill</a>
+																	 <a href="#">{{ event.location }}</a>
 																	 <!--<a href="javascript:;">Add Mood Message</a>-->
 																 </td>
 															 </tr>
 																 <tr>
 																 <td class="field">When</td>
-                                 <td>02.05.14 at 5:30 pm</td>
+                                 <td>{{ event.date }}</td>
 															 </tr>
 														 </tr>
 															<tr class="highlight">
@@ -90,7 +90,7 @@
 															</tr>
                               <tr class="highlight">
                                  <td class="field">Host</td>
-                                 <td><a href="/">You</a></td>
+                                 <td>{{ backend.users[event.host].user_tile | safe }}</td>
                               </tr>
                               <tr class="divider">
                                  <td colspan="2"></td>
@@ -98,28 +98,9 @@
                               <tr>
                                  <td class="field">Attendees</td>
                                  <td>
-																	 <div class="media user-following">
-																			 <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="User Avatar" class="media-object pull-left">
-																			 <div class="media-body">
-																					 <a href="/jane_doe">Stella<br><span class="text-muted username">@stella</span></a>																			 </div>
-																	 </div>
-																	 <div class="media user-following">
-																			 <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="User Avatar" class="media-object pull-left">
-																			 <div class="media-body">
-																					 <a href="/jane_doe">Jane Doe<br><span class="text-muted username">@janed</span></a>
-																			 </div>
-																	 </div>
-																	 <div class="media user-following">
-																			 <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="User Avatar" class="media-object pull-left">
-																			 <div class="media-body">
-																					 <a href="/jane_doe">John Simmons<br><span class="text-muted username">@jsimm</span></a>																			 </div>
-																	 </div>
-																	 <div class="media user-following">
-																			 <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="User Avatar" class="media-object pull-left">
-																			 <div class="media-body">
-																					 <a href="/jane_doe">Antonius<br><span class="text-muted username">@mrantonius</span></a>
-																				 </div>
-																	 </div>
+                                   {% for attendee in event.attendees %}
+                                    {{backend.users[attendee].user_tile | safe}}
+                                   {% endfor %}
 																	 <button type="button" class="btn btn-default">See all attendees</button>
 																 </br>
 															 </br>
@@ -132,12 +113,15 @@
                                  <td class="field">&nbsp;</td>
                                  <td class="p-t-10 p-b-10">
 																	 <div class="btn-toolbar pull-right activity-actions">
-                                     <button type="button" class="btn btn-md btn-toggle-following width-150 pull-left"><span><span class="glyphicon glyphicon-share" style="vertical-align: center;"></span></span><a href="/xyz"><strong> Share</strong></a></button>
+                                     <button type="button" class="btn btn-md btn-toggle-following width-150 pull-left"><span><span class="glyphicon glyphicon-share" style="vertical-align: center;"></span></span><a href="#"><strong> Share</strong></a></button>
                                      <button type="button" class="btn btn-md btn-toggle-hosting width-150 pull-left"><span><span class="glyphicon glyphicon-copy"></span><strong> Copy Link</strong></span></button>&nbsp;
                                    </div>
-
-																	 <a href="/new_event"><button type="submit" class="btn btn-toggle-info width-150">Update</button></a>
-                                  <button type="submit" class="btn btn-danger width-150 m-l-5">Delete Event</button>
+                                   {% if event.host == backend.user %}
+  																	 <a href="/new_event"><button type="submit" class="btn btn-toggle-info width-150">Update</button></a>
+                                     <button type="submit" class="btn btn-danger width-150 m-l-5">Delete Event</button>
+                                   {% else %}
+                                     <button type="button" class="btn btn-md btn-toggle-following width-150"><span><span class="glyphicon glyphicon-check" style="vertical-align: center;"></span></span><a href="#"><strong> Attend </strong></a></button>
+                                   {% endif%}
                                 </td>
                               </tr>
                            </tbody>
