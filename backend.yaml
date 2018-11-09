@@ -9,7 +9,7 @@ events:
     attendees: [percy, john_doe]
     date: Today 05:30 pm - 02.05.2014
     location: Chicago Fire Grill
-    attire: casual
+    description: Burgers and beer at chicago fire
   abc:
     title: Engineering Wine Society (EWS)
     link: abc
@@ -18,7 +18,7 @@ events:
     attendees: [john_doe, amanda]
     date: Tomorrow 08:00 pm - 02.06.2014
     location: Rock Bottom
-    attire: casual
+    description: Wine & Networking
   efg:
     title: Cocktails
     link: efg
@@ -27,7 +27,7 @@ events:
     attendees: [jane_doe, john_doe, amanda]
     date: Next Tuesday 04:30 pm - 02.10.2014
     location: BJ's
-    attire: casual
+    description: woof
   ev4:
     title: event4
     link: ev4
@@ -36,7 +36,16 @@ events:
     attendees: [percy]
     date: Sometime
     location: Somewhere
-    attire: casual
+    description: Something
+  new_event:
+    title: ''
+    link: ''
+    host: amanda
+    img_src: ''
+    attendees: []
+    date: ''
+    location: ''
+    description: ''
 
 users:
   jane_doe:

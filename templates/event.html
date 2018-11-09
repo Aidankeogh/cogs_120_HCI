@@ -70,7 +70,6 @@
                                  <td class="field">Where</td>
                                  <td>
 																	 <a href="#">{{ event.location }}</a>
-																	 <!--<a href="javascript:;">Add Mood Message</a>-->
 																 </td>
 															 </tr>
 																 <tr>
@@ -79,13 +78,9 @@
 															 </tr>
 														 </tr>
 															<tr class="highlight">
-																 <td class="field">Event Type</td>
+																 <td class="field">Info</td>
 																 <td>
-																	 <div class="btn-toolbar">
-																		  <button class="btn btn-default active">Casual</button>
-																		  <button class="btn btn-default" disabled>Biz Casual</button>
-																		  <button class="btn btn-default" disabled>Formal</button>
-																		</div>
+																	 {{ event.description }}
 																 </td>
 															</tr>
                               <tr class="highlight">

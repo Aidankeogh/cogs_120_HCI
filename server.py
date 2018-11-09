@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
 from backend import backend, get_tiles
 import yaml
@@ -13,7 +13,6 @@ Bootstrap(app)
 
 @app.route('/')
 def home():
-    get_tiles(backend['user'])
     return render_template('home.html', backend = backend, user=backend['user'])
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -24,13 +23,9 @@ def login():
 def about():
     return render_template('about.html', backend = backend)
 
-@app.route('/new_event')
-def create_event():
-    return render_template('new_event.html', backend = backend)
-
-@app.route('/edit_profile')
-def edit_profile():
-    return render_template('edit_profile.html', backend = backend)
+@app.route('/search')
+def search():
+    return render_template('search.html', backend = backend)
 
 @app.route('/<something>')
 def other_profile(something):
@@ -42,6 +37,8 @@ def other_profile(something):
         return render_template('event.html', backend = backend, event=backend['events'][event])
     else:
         return render_template('404')
+
+
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
