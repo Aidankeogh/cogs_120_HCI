@@ -33,7 +33,7 @@ events:
     link: ev4
     host: john_doe
     img_src: https://bootdey.com/img/Content/avatar/avatar5.png
-    attendees: [percy]
+    attendees: []
     date: Sometime
     location: Somewhere
     description: Something
@@ -65,7 +65,7 @@ users:
     friends: [john_doe,amanda]
     about: I am a dog.
     picture: /static/percy.jpg
-    events: [xyz, efg, ev4]
+    events: [xyz, efg]
   amanda:
     name: Amanda Smith
     link: amanda

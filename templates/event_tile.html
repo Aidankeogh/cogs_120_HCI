@@ -21,10 +21,10 @@
       {% if event.hosting %}
         <button type="button" class="btn btn-md btn-light btn-block pull-right"><span><span class="glyphicon glyphicon-edit"></span><strong> Edit </strong></span></button>&nbsp;
       {% elif current_user in event.attendees %}
-        <button type="button" class="btn btn-md btn-danger btn-block pull-right"><span><span class="glyphicon glyphicon-exclamation-sign"></span><strong> Unattend </strong></span></button>&nbsp;
+        <button type="button" class="attend_btn btn btn-md btn-danger btn-block pull-right"><span><span class="glyphicon glyphicon-exclamation-sign"></span><strong> Unattend </strong></span></button>&nbsp;
       {% else %}
       <!-- Trigger the modal with a button -->
-        <button type="button" value="{{event.link}}" class="btn btn-md btn-success btn-block pull-right" data-toggle="modal" data-target="#myAttend">
+        <button type="button" value="{{event.link}}" class="unattend_btn btn btn-md btn-success btn-block pull-right" data-toggle="modal" data-target="#myAttend">
           <span><span class="glyphicon glyphicon-check"></span><strong> Attend </strong></span>
         </button>&nbsp;
 
@@ -39,7 +39,7 @@
                 <h4 class="modal-title">Congrats!</h4>
               </div>
               <div class="modal-body">
-                <p>You are now attending {{event.title}}</p>
+                <p>You are now attending the event!</p>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

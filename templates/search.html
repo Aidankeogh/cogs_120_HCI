@@ -9,7 +9,7 @@
 
 {% extends "base.html" %}
 
-{% block title %}Profile{% endblock %}
+{% block title %}Triton Pub Happy Hours!{% endblock %}
 
 {% block content %}
 
@@ -105,27 +105,39 @@
   </body>
 
 <script>
+
 $(document).ready(function(){
-  $(document).ready(function(){
-      $("#friend_filter").click(function(){
-        $(".event_tile").show()
-      });
-      $("#faculty_filter").click(function(){
-          $(".event_tile").toggle()
-          $(".Faculty_tile").show()
-      });
-      $("#research_filter").click(function(){
-          $(".event_tile").toggle()
-          $(".Research_tile").show()
-      });
-      $("#club_filter").click(function(){
-          $(".event_tile").toggle()
-          $(".Clubs_tile").show()
-      });
-      $("#industry_filter").click(function(){
-          $(".event_tile").toggle()
-          $(".Industry_tile").show()
-      });
+
+  attended = function(){
+    $(this).replaceWith(`
+      <button type="button" class="btn btn-md btn-light btn-block pull-right"><span><strong> Attended! </strong></span></button>&nbsp;
+    `)
+  };
+  unattended = function(){
+    $(this).replaceWith(`
+      <button type="button" class="btn btn-md btn-light btn-block pull-right"><span><strong> Unattended... </strong></span></button>&nbsp;
+    `).link
+  };
+  $(".unattend_btn").click(attended);
+  $(".attend_btn").click(unattended);
+  $("#friend_filter").click(function(){
+    $(".event_tile").show()
+  });
+  $("#faculty_filter").click(function(){
+      $(".event_tile").toggle()
+      $(".Faculty_tile").show()
+  });
+  $("#research_filter").click(function(){
+      $(".event_tile").toggle()
+      $(".Research_tile").show()
+  });
+  $("#club_filter").click(function(){
+      $(".event_tile").toggle()
+      $(".Clubs_tile").show()
+  });
+  $("#industry_filter").click(function(){
+      $(".event_tile").toggle()
+      $(".Industry_tile").show()
   });
 });
 </script>
