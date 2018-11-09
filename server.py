@@ -23,6 +23,10 @@ def login():
 def about():
     return render_template('about.html', backend = backend)
 
+@app.route('/search')
+def search():
+    return render_template('search.html', backend = backend)
+
 @app.route('/<something>')
 def other_profile(something):
     if something in backend['users']:
