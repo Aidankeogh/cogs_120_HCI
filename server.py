@@ -13,7 +13,6 @@ Bootstrap(app)
 
 @app.route('/')
 def home():
-    get_tiles(backend['user'])
     return render_template('home.html', backend = backend, user=backend['user'])
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -23,14 +22,6 @@ def login():
 @app.route('/about')
 def about():
     return render_template('about.html', backend = backend)
-
-@app.route('/new_event')
-def create_event():
-    return render_template('new_event.html', backend = backend)
-
-@app.route('/edit_profile')
-def edit_profile():
-    return render_template('edit_profile.html', backend = backend)
 
 @app.route('/<something>')
 def other_profile(something):
