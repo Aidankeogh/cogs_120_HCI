@@ -4,6 +4,14 @@ html,body{
 			background-color: white !important;
 		}
 
+		#rcorners1 {
+	    border-radius: 25px;
+			color: white;
+			border-color: white;
+			border-style: solid;
+	    padding: 0.5em;
+		}
+
 		.login-form {
 				width: 340px;
 		    	margin: 50px auto;
