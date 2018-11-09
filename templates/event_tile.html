@@ -1,4 +1,4 @@
-<div class="media activity-item event_tile">
+<div class="media activity-item event_tile {% for i in range(4) %}{% if badge_counts[i] > 0 %} {{badges[i]}}_tile{% endif %}{% endfor %}" >
     <a href="/{{ event.host }}" class="pull-left">
         <img src="{{ host.picture }}" alt="Avatar" class="media-object avatar">
     </a>

@@ -84,6 +84,8 @@
                           Industry members attending</a></li>
                       </ul>
                     </div>
+                    </br>
+                    </br>
                     <div class="nav-pills">
                         <!-- activities -->
                         <div class="tab-pane fade in active" id="all">
@@ -104,21 +106,27 @@
 
 <script>
 $(document).ready(function(){
-    $("#friend_filter").click(function(){
-      var c = $(".event_tile")
-    });
-    $("#faculty_filter").click(function(){
+  $(document).ready(function(){
+      $("#friend_filter").click(function(){
         $(".event_tile").show()
-    });
-    $("#research_filter").click(function(){
-
-    });
-    $("#club_filter").click(function(){
-
-    });
-    $("#industry_filter").click(function(){
-
-    });
+      });
+      $("#faculty_filter").click(function(){
+          $(".event_tile").toggle()
+          $(".Faculty_tile").show()
+      });
+      $("#research_filter").click(function(){
+          $(".event_tile").toggle()
+          $(".Research_tile").show()
+      });
+      $("#club_filter").click(function(){
+          $(".event_tile").toggle()
+          $(".Clubs_tile").show()
+      });
+      $("#industry_filter").click(function(){
+          $(".event_tile").toggle()
+          $(".Industry_tile").show()
+      });
+  });
 });
 </script>
 

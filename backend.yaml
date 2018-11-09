@@ -37,15 +37,6 @@ events:
     date: Sometime
     location: Somewhere
     description: Something
-  new_event:
-    title: ''
-    link: ''
-    host: amanda
-    img_src: ''
-    attendees: []
-    date: ''
-    location: ''
-    description: ''
 
 users:
   jane_doe:
@@ -79,7 +70,7 @@ users:
     name: Amanda Smith
     link: amanda
     email: amand@s.mith
-    badges: [ ~, ~, Math club president, Recruiter at GAP]
+    badges: [ ~, ~, ~, Recruiter at GAP]
     friends: [percy,jane_doe]
     about: I am a dork.
     picture: https://bootdey.com/img/Content/avatar/avatar3.png
