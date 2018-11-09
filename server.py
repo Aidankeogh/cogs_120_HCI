@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_bootstrap import Bootstrap
 from backend import backend, get_tiles
 import yaml
@@ -42,8 +42,6 @@ def other_profile(something):
         return render_template('event.html', backend = backend, event=backend['events'][event])
     else:
         return render_template('404')
-
-
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')

@@ -1,4 +1,4 @@
-<div class="media activity-item">
+<div class="media activity-item event_tile">
     <a href="/{{ event.host }}" class="pull-left">
         <img src="{{ host.picture }}" alt="Avatar" class="media-object avatar">
     </a>
@@ -6,7 +6,7 @@
     <div class="media-body">
         <p class="activity-title"><a href="/{{ event.link }}">{{ event.title }}</a> at <a href="#">{{ event.location }}</a></p>
         <small class="text-muted">{{ event.date }}</small>
-        <br>
+      </br></br>
         {{attendees}} <span class="glyphicon glyphicon-user" title="{{attendees}} attending"> </span>
         {% if friends > 0 %}
           | {{friends}} <span class="glyphicon glyphicon-heart-empty Friend" title="{{friends}} friends"> </span>
@@ -16,12 +16,39 @@
             | {{badge_counts[i]}} <span class="glyphicon glyphicon-tag {{badges[i]}}" title="{{badge_counts[i]}} from {{badges[i]}}"> </span>
           {% endif %}
         {% endfor %}
-    </div>
-    <div class="btn-toolbar pull-right activity-actions">
+
+    <div class="btn-toolbar pull-right activity-actions inline-block">
       {% if event.hosting %}
-        <button type="button" class="btn btn-md btn-toggle-hosting pull-right"><span><span class="glyphicon glyphicon-check"></span><strong> Hosting</strong></span></button>&nbsp;
+        <button type="button" class="btn btn-md btn-light btn-block pull-right"><span><span class="glyphicon glyphicon-edit"></span><strong> Edit </strong></span></button>&nbsp;
+      {% elif current_user in event.attendees %}
+        <button type="button" class="btn btn-md btn-danger btn-block pull-right"><span><span class="glyphicon glyphicon-exclamation-sign"></span><strong> Unattend </strong></span></button>&nbsp;
       {% else %}
-        <button type="button" class="btn btn-md btn-toggle-following pull-right"><span><span class="glyphicon glyphicon-check"></span><strong> Going </strong></span></button>&nbsp;
+      <!-- Trigger the modal with a button -->
+        <button type="button" value="{{event.link}}" class="btn btn-md btn-success btn-block pull-right" data-toggle="modal" data-target="#myAttend">
+          <span><span class="glyphicon glyphicon-check"></span><strong> Attend </strong></span>
+        </button>&nbsp;
+
+        <!-- Modal -->
+        <div class="modal fade" id="myAttend" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Congrats!</h4>
+              </div>
+              <div class="modal-body">
+                <p>You are now attending {{event.title}}</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
       {% endif %}
+    </div>
     </div>
 </div>
