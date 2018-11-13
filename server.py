@@ -36,13 +36,13 @@ def search():
             e = backend['events'][link]
             e['attendees'].remove(r[link+'name'])
             backend['users'][backend['user']]['events'].remove(link)
+        set_backend(backend)
 
-    set_backend(backend)
     return render_template('search.html', backend = backend)
 
 @app.route('/<something>', methods=['GET', 'POST'])
 def other_profile(something):
-
+    backend = get_backend()
     if request.method == 'POST': #this block is only entered when the form is submitted
         r = request.form
         print r
@@ -61,7 +61,7 @@ def other_profile(something):
             link = r['unattend']
             e = backend['events'][link]
             e['attendees'].remove(r[link+'name'])
-        return redirect(request.path,code=302)
+        set_backend(backend)
 
     if something in backend['users']:
         user = something
@@ -74,13 +74,14 @@ def other_profile(something):
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    backend = get_backend()
     if request.method == 'POST': #this block is only entered when the form is submitted
         backend['logged_in'] = True
-
         if request.form['username'] not in backend['users']:
             backend['user'] = 'percy'
         else:
             backend['user'] = request.form['username']
+        set_backend(backend)
 
     return render_template('login.html', backend = backend)
 
