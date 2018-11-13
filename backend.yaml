@@ -1,5 +1,7 @@
 user: percy
+logged_in: True
 badges: [Faculty, Research, Clubs, Industry]
+badge_icons: [fa-chalkboard-teacher, fa-flask, fa-users, fa-suitcase]
 events:
   xyz:
     title: Beer + Burgers

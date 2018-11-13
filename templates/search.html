@@ -30,10 +30,10 @@
                                       </button>
                                       <ul class="dropdown-menu" role="menu">
                                         <li><a href="#">
-                                          <span class="glyphicon glyphicon-user badge_icon"> </span>
+                                          <i class="fas fa-user"></i>
                                           Total attendees</a></li>
                                         <li><a href="#">
-                                          <span class="glyphicon glyphicon-heart-empty Friend"> </span>
+                                          <i class="fas fa-heart Friend"></i>
                                           Friends attending</a></li>
                                         <li><a href="#">
                                           <span class="glyphicon glyphicon-tag Faculty"> </span>
@@ -68,19 +68,19 @@
                           <span>Filter By:</span>
                         </a></li>
                         <li class="nav-item"><a href="#" id="friend_filter" class="list-group-item">
-                          <span class="glyphicon glyphicon-heart-empty Friend"> </span>
+                          <i class="fas fa-heart Friend"></i>
                           Friends attending</a></li>
                         <li class="nav-item"><a href="#" id="faculty_filter" class="list-group-item">
-                          <span class="glyphicon glyphicon-tag Faculty"> </span>
+                          <i class="fas {{backend.badge_icons[0]}} Faculty"></i>
                           Faculty attending</a></li>
                         <li class="nav-item"><a href="#" id="research_filter" class="list-group-item">
-                          <span class="glyphicon glyphicon-tag Research"> </span>
+                          <i class="fas {{backend.badge_icons[1]}} Research"></i>
                           Researchers attending</a></li>
                         <li class="nav-item"><a href="#" id="club_filter" class="list-group-item">
-                          <span class="glyphicon glyphicon-tag Clubs"> </span>
+                          <i class="fas {{backend.badge_icons[2]}} Clubs"></i>
                           Club leaders attending</a></li>
                         <li class="nav-item"><a href="#" id="industry_filter" class="list-group-item">
-                          <span class="glyphicon glyphicon-tag Industry"> </span>
+                          <i class="fas {{backend.badge_icons[3]}} Industry"></i>
                           Industry members attending</a></li>
                       </ul>
                     </div>
@@ -89,8 +89,8 @@
                     <div class="nav-pills">
                         <!-- activities -->
                         <div class="tab-pane fade in active" id="all">
-                            {% for event in backend.events %}
-                              {{ backend.events[event].event_tile | safe}}
+                            {% for _, event in backend.events.items() %}
+                              {% include 'event_tile.html' %}
                             {% endfor %}
                           </br>
                         </br>

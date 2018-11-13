@@ -4,9 +4,9 @@
         <a href="/{{ user.link }}">{{ user.name }}</a>  -
         {% for i in range(4) %}
           {% if user.badges[i]%}
-          <span class="glyphicon glyphicon-tag
-          {{badges[i]}}"
-          title=" {{user.badges[i]}}"></span>
+          <i class="fas {{backend.badge_icons[i]}} {{backend.badges[i]}}" title=" {{backend.badges[i]}}"></i>
+          <span>  {{user.badges[i]}}</span>
+          <br>
           {% endif %}
         {% endfor %}
     </div>

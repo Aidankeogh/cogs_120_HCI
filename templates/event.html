@@ -85,7 +85,9 @@
 															</tr>
                               <tr class="highlight">
                                  <td class="field">Host</td>
-                                 <td>{{ backend.users[event.host].user_tile | safe }}</td>
+                                 <td>{% set user = backend.users[event.host] %}
+                                     {% include 'user_tile.html' %}
+                                 </td>
                               </tr>
                               <tr class="divider">
                                  <td colspan="2"></td>
@@ -94,7 +96,8 @@
                                  <td class="field">Attendees</td>
                                  <td>
                                    {% for attendee in event.attendees %}
-                                    {{backend.users[attendee].user_tile | safe}}
+                                    {% set user = backend.users[attendee] %}
+                                    {% include 'user_tile.html' %}
                                    {% endfor %}
 																	 <button type="button" class="btn btn-default">See all attendees</button>
 																 </br>
@@ -112,10 +115,20 @@
                                      <button type="button" class="btn btn-md btn-toggle-hosting width-150 pull-left"><span><span class="glyphicon glyphicon-copy"></span><strong> Copy Link</strong></span></button>&nbsp;
                                    </div>
                                    {% if event.host == backend.user %}
-  																	 <a href="/new_event"><button type="submit" class="btn btn-toggle-info width-150">Update</button></a>
+  																	 <button type="submit" data-toggle="modal" data-target="#{{ event.link }}Modal" class="btn btn-toggle-info width-150">Update</button>
                                      <button type="submit" class="btn btn-danger width-150 m-l-5">Delete Event</button>
+                                     {% include 'edit_event_modal.html'%}
+                                   {% elif backend.user in event.attendees %}
+                                     <button type="button" data-toggle="modal" data-target="#{{ event.link }}Unattend" class="btn btn-md btn-danger width-150">
+                                       <span>
+                                       <span class="glyphicon glyphicon-exclamation-sign"></span><strong> Unattend </strong></span>
+                                     </button>&nbsp;
+                                     {% include 'unattend_event_modal.html' %}
                                    {% else %}
-                                     <button type="button" class="btn btn-md btn-toggle-following width-150"><span><span class="glyphicon glyphicon-check" style="vertical-align: center;"></span></span><a href="#"><strong> Attend </strong></a></button>
+                                     <button type="button" data-toggle="modal" data-target="#{{ event.link }}Attend" class="btn btn-md btn-toggle-following width-150"><span>
+                                       <span class="glyphicon glyphicon-check" style="vertical-align: center;"></span></span><a href="#"><strong> Attend </strong></a>
+                                     </button>
+                                     {% include 'attend_event_modal.html'%}
                                    {% endif%}
                                 </td>
                               </tr>

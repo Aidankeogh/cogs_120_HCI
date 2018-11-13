@@ -7,6 +7,7 @@
 {{super()}}
 <link rel="stylesheet"
       href="{{url_for('.static', filename='style.css')}}">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 {% endblock %}
 
@@ -28,24 +29,31 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse pull-right navbar-icon" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/" class="navbar-txt">
-          {% if 'search' in request.url or backend.user in request.url or 'about' in request.url or 'login' in request.url%}<strong>Home</strong></a></li>
-          {% else %} <strong id="rcorners1">Home</strong></a></li>
-          {% endif %}
         <li><a href="/search" class="navbar-txt">
-          {% if 'search' in request.url %} <strong id="rcorners1">Search</strong></a></li>
+          {% if 'search' in request.url or request.url == "http://0.0.0.0:5000/" or request.url == "http://www.triton.pub/"%}
+            <strong id="rcorners1"> Search</strong></a></li>
           {% else %} <strong>Search</strong></a></li>
           {% endif %}
-        <li><a href="/{{ backend.user }}" class="navbar-txt">
-          {% if backend.user in request.url %} <strong id="rcorners1">Profile</strong></a></li>
-          {% else %} <strong>Profile</strong></a></li>
-          {% endif %}
+        {% if backend.logged_in %}
+          <li><a href="/{{ backend.user }}" class="navbar-txt">
+            {% if backend.user in request.url %} <strong id="rcorners1">Profile</strong></a></li>
+            {% else %} <strong>Profile</strong></a></li>
+            {% endif %}
+        {% endif %}
         <li><a href="/about" class="navbar-txt">
           {% if 'about' in request.url %} <strong id="rcorners1">About</strong></a></li>
           {% else %} <strong>About</strong></a></li>
           {% endif %}
         <li><a href="/login" class="navbar-txt">
-          <strong>{% if backend.user == Null %} Login {% else %} Logout, {{ backend.user.title() }} {% endif %}</strong></a></li>
+            {% if not backend.logged_in %}
+              {% if 'login' in request.url %} <strong id="rcorners1">Log In</strong></a></li>
+              {% else %} <strong>Log In</strong></a></li>
+              {% endif %}
+            {% else %}
+              {% if 'login' in request.url %} <strong id="rcorners1">  Logout, {{ backend.user.title()}} </strong></a></li>
+              {% else %} <strong>  Logout, {{ backend.user.title()}} </strong></a></li>
+              {% endif %}
+            {% endif %}></a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

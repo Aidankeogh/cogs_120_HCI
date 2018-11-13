@@ -38,9 +38,7 @@
                         <h3>Badges</h3>
                         {% for i in range(4) %}
                           {% if backend.users[user].badges[i]%}
-                          <span class="glyphicon glyphicon-tag
-                          {{backend.badges[i]}}"
-                          title=" {{backend.badges[i]}}"></span>
+                           <i class="fas {{backend.badge_icons[i]}} {{backend.badges[i]}}" title="{{backend.badges[i]}}"></i>
                           <span>{{backend.users[user].badges[i]}}</span>
                           <br>
                           {% endif %}
@@ -115,7 +113,8 @@
                         <!-- activities -->
                         <div class="tab-pane fade in active" id="all">
                             {% for event in backend.users[user].events %}
-                              {{ backend.events[event].event_tile | safe}}
+                              {% set event = backend.events[event]%}
+                              {% include 'event_tile.html' %}
                             {% endfor %}
                           </br>
                         </br>
@@ -125,9 +124,8 @@
                         <!-- followers -->
                         <div class="tab-pane fade" id="followers">
                           {% for event in backend.users[user].events %}
-                            {% if not backend.events[event].hosting %}
-                              {{ backend.events[event].event_tile | safe}}
-                            {% endif %}
+                            {% set event = backend.events[event]%}
+                            {% include 'event_tile.html' %}
                           {% endfor %}
                         </br>
                       </br>
@@ -137,9 +135,8 @@
                         <!-- following -->
                         <div class="tab-pane fade" id="following">
                           {% for event in backend.users[user].events %}
-                            {% if backend.events[event].hosting %}
-                              {{ backend.events[event].event_tile | safe}}
-                            {% endif %}
+                            {% set event = backend.events[event]%}
+                            {% include 'event_tile.html' %}
                           {% endfor %}
                         </br>
                       </br>
