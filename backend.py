@@ -1,18 +1,8 @@
 from jinja2 import Template
 import yaml
 
-with open('backend.yaml', 'r') as f:
-    backend = yaml.load(f)
-
-with open('templates/event_tile.html') as file:
-    event_template = Template(file.read())
-with open('templates/user_tile.html') as file:
-    user_template = Template(file.read())
-
-
-badges = backend['badges']
-
-def get_tiles():
+def get_tiles(backend):
+    badges = backend['badges']
     for event in backend['events']:
         event = backend['events'][event]
         event['hosting'] = (event['host'] == backend['user'])
@@ -32,4 +22,18 @@ def get_tiles():
         event['num_attendees'] = attendees
         event['badge_counts'] = badge_counts
 
-get_tiles()
+def get_backend():
+    with open('backend.yaml', 'r') as f:
+        backend = yaml.load(f)
+
+    with open('templates/event_tile.html') as file:
+        event_template = Template(file.read())
+    with open('templates/user_tile.html') as file:
+        user_template = Template(file.read())
+
+    get_tiles(backend)
+    return backend
+
+def set_backend(b):
+    with open('backend.yaml', 'w') as f:
+        yaml.dump(b, f, default_flow_style=False)

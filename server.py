@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect
 from flask_bootstrap import Bootstrap
-from backend import backend, get_tiles
+from backend import get_backend, set_backend
 import yaml
 
 # Check out flask cheat sheet here
@@ -11,9 +11,11 @@ Bootstrap(app)
 
 
 
+backend = get_backend()
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/search', methods=['GET', 'POST'])
 def search():
+    backend = get_backend()
     if request.method == 'POST': #this block is only entered when the form is submitted
         r = request.form
         print r
@@ -28,12 +30,14 @@ def search():
             link = r['attend']
             e = backend['events'][link]
             e['attendees'].append(r[link+'name'])
+            backend['users'][backend['user']]['events'].append(link)
         if  'unattend' in r: # attend event
             link = r['unattend']
             e = backend['events'][link]
             e['attendees'].remove(r[link+'name'])
-        return redirect(request.path,code=302)
+            backend['users'][backend['user']]['events'].remove(link)
 
+    set_backend(backend)
     return render_template('search.html', backend = backend)
 
 @app.route('/<something>', methods=['GET', 'POST'])
