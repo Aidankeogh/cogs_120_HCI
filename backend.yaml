@@ -85,9 +85,22 @@ events:
     location: Chicago Fire Grill
     num_attendees: 3
     title: Beer + Burgers
-logged_in: true
-user: !!python/unicode 'frank'
+logged_in: false
+user: null
 users:
+  !!python/unicode 'Aidan da Goob':
+    about: ''
+    badges:
+    - null
+    - null
+    - null
+    - null
+    email: !!python/unicode ''
+    events: []
+    friends: []
+    link: !!python/unicode 'Aidan da Goob'
+    name: !!python/unicode 'aidan da goob'
+    picture: https://bootdey.com/img/Content/avatar/avatar3.png
   !!python/unicode 'aidan':
     about: ''
     badges:

@@ -3,7 +3,11 @@ html,body{
 			min-height: 1585px;
 			background-color: white !important;
 		}
-
+		.jssocials-shares {
+			display: inline-block;
+			margin: 0em !important;
+    	margin-left: 1em !important;
+		}
 		#rcorners1 {
 	    border-radius: 25px;
 			color: white;

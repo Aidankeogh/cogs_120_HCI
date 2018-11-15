@@ -15,6 +15,8 @@
       href="{{url_for('.static', filename='events.css')}}">
 <link rel="stylesheet"
 			href="{{url_for('.static', filename='style.css')}}">
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.css" />
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials-theme-classic.css" />
 {% endblock %}
 
 {% block title %}Event {{event.title}}{% endblock %}
@@ -110,9 +112,36 @@
                               <tr class="highlight">
                                  <td class="field">&nbsp;</td>
                                  <td class="p-t-10 p-b-10">
-																	 <div class="btn-toolbar pull-right activity-actions">
-                                     <button type="button" class="btn btn-md btn-toggle-following width-150 pull-left"><span><span class="glyphicon glyphicon-share" style="vertical-align: center;"></span></span><a href="#"><strong> Share</strong></a></button>
-                                     <button type="button" class="btn btn-md btn-toggle-hosting width-150 pull-left"><span><span class="glyphicon glyphicon-copy"></span><strong> Copy Link</strong></span></button>&nbsp;
+																	 <div class="btn-toolbar pull-right activity-actions" id="share">
+                                       <script src="jquery.js"></script>
+                                       <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.min.js"></script>
+                                       <script>
+                                           $("#share").jsSocials({
+                                               text: "{{event.title}}",
+                                               showLabel: false,
+                                               showCount: false,
+                                               shares: ["email", "twitter", "facebook", "linkedin"]
+                                             });
+                                       </script>
+                                       <button id="copyLink" type="button" class="btn btn-md btn-toggle-hosting width-150 pull-left" onclick="copyToBoard()">
+                                         <span><span class="glyphicon glyphicon-copy"></span>
+                                         <strong> Copy Link</strong>
+                                       </span></button>&nbsp;
+                                       <script>
+                                            function copyToBoard() {
+                                              var dummy = document.createElement('input'),
+                                                   text = window.location.href;
+
+                                              document.body.appendChild(dummy);
+                                              dummy.value = text;
+                                              dummy.select();
+                                              document.execCommand('copy');
+                                              document.body.removeChild(dummy);
+
+                                              var button = document.getElementById("copyLink");
+                                              button.innerHTML = "Copied To Clipboard";
+                                            }
+                                      </script>
                                    </div>
                                    {% if event.host == backend.user %}
   																	 <button type="submit" data-toggle="modal" data-target="#{{ event.link }}EditModal" class="btn btn-toggle-info width-150">Update</button>
