@@ -20,7 +20,7 @@ events:
     - 1
     date: Tomorrow 08:00 pm - 02.06.2014
     description: Wine & Networking
-    friends: 0
+    friends: 1
     host: jane_doe
     hosting: false
     img_src: https://bootdey.com/img/Content/avatar/avatar2.png
@@ -40,7 +40,7 @@ events:
     - 1
     date: Next Tuesday 04:30 pm - 02.10.2014
     description: woof
-    friends: 0
+    friends: 2
     host: percy
     hosting: false
     img_src: https://bootdey.com/img/Content/avatar/avatar3.png
@@ -58,7 +58,7 @@ events:
     - 0
     date: Sometime
     description: Something
-    friends: 0
+    friends: 1
     host: john_doe
     hosting: false
     img_src: https://bootdey.com/img/Content/avatar/avatar5.png
@@ -77,7 +77,7 @@ events:
     - 0
     date: Today 05:30 pm - 02.05.2014
     description: Burgers and beer at chicago fire
-    friends: 0
+    friends: 2
     host: jane_doe
     hosting: false
     img_src: https://bootdey.com/img/Content/avatar/avatar1.png

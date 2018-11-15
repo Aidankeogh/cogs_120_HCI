@@ -40,10 +40,6 @@
             {% else %} <strong>Profile</strong></a></li>
             {% endif %}
         {% endif %}
-        <li><a href="/about" class="navbar-txt">
-          {% if 'about' in request.url %} <strong id="rcorners1">About</strong></a></li>
-          {% else %} <strong>About</strong></a></li>
-          {% endif %}
         <li><a href="/login" class="navbar-txt">
             {% if not backend.logged_in %}
               {% if 'login' in request.url %} <strong id="rcorners1">Log In</strong></a></li>

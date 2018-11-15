@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from flask_bootstrap import Bootstrap
 from backend import get_backend, set_backend
+from search import search_events
 import yaml
 import string
 import random
@@ -21,6 +22,11 @@ backend = get_backend()
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     backend = get_backend()
+    eventlist = backend['events'].keys()
+    eventlist.sort()
+    query = request.args.get('query')
+    if query:
+        eventlist = search_events(query,backend)
     if request.method == 'POST': #this block is only entered when the form is submitted
         r = request.form
         print r
@@ -43,7 +49,7 @@ def search():
             backend['users'][backend['user']]['events'].remove(link)
         set_backend(backend)
 
-    return render_template('search.html', backend = backend)
+    return render_template('search.html', backend = backend, eventlist = eventlist)
 
 @app.route('/<something>', methods=['GET', 'POST'])
 def other_profile(something):
@@ -62,10 +68,12 @@ def other_profile(something):
             link = r['attend']
             e = backend['events'][link]
             e['attendees'].append(r[link+'name'])
+            backend['users'][backend['user']]['events'].append(link)
         if  'unattend' in r: # attend event
             link = r['unattend']
             e = backend['events'][link]
             e['attendees'].remove(r[link+'name'])
+            backend['users'][backend['user']]['events'].remove(link)
         if 'edituser' in r:
             link = r['edituser']
             u = backend['users'][link]
@@ -154,22 +162,9 @@ def login():
 
     return render_template('login.html', backend = backend)
 
-
-@app.route('/about')
-def about():
-    return render_template('about.html', backend = backend)
-
 @app.route('/favicon.ico')
 def favicon():
     return 'null'
-
-@app.route('/new_event', methods=['GET', 'POST'])
-def new_event():
-    return render_template('new_event.html', backend = backend)
-
-
-
-
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
