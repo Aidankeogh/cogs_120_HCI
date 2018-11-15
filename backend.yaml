@@ -33,7 +33,6 @@ events:
     - jane_doe
     - john_doe
     - amanda
-    - !!python/unicode 'aidan'
     badge_counts:
     - 1
     - 1
@@ -87,7 +86,7 @@ events:
     num_attendees: 3
     title: Beer + Burgers
 logged_in: true
-user: !!python/unicode 'aidan'
+user: !!python/unicode 'frank'
 users:
   !!python/unicode 'aidan':
     about: ''
@@ -97,12 +96,11 @@ users:
     - null
     - null
     email: !!python/unicode ''
-    events:
-    - !!python/unicode 'efg'
+    events: []
     friends: []
     link: !!python/unicode 'aidan'
-    name: !!python/unicode 'aidan keogh'
-    picture: !!python/unicode ''
+    name: !!python/unicode 'AYYY DAN'
+    picture: https://bootdey.com/img/Content/avatar/avatar1.png
   amanda:
     about: I am a dork.
     badges:
@@ -120,6 +118,19 @@ users:
     link: amanda
     name: Amanda Smith
     picture: https://bootdey.com/img/Content/avatar/avatar3.png
+  !!python/unicode 'frank':
+    about: ''
+    badges:
+    - null
+    - null
+    - null
+    - null
+    email: !!python/unicode ''
+    events: []
+    friends: []
+    link: !!python/unicode 'frank'
+    name: !!python/unicode 'frizzank'
+    picture: https://bootdey.com/img/Content/avatar/avatar5.png
   jane_doe:
     about: I am Jane Doe.
     badges:

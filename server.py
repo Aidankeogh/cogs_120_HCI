@@ -142,7 +142,10 @@ def login():
             u['email'] = r['email']
             u['about'] = ''
             u['friends'] = []
-            u['picture'] = r['picture']
+            if r['picture'] != '':
+                u['picture'] = r['picture']
+            else:
+                u['picture'] = "https://bootdey.com/img/Content/avatar/avatar"+ str(random.choice([1,2,3,4,5,6,7,8])) + ".png"
             backend['user'] = r['link']
             backend['logged_in'] = True
             set_backend(backend)
