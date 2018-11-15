@@ -13,21 +13,21 @@
       <div class="modal-body">
         <form method="post">
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Attend as:</label>
             {% if backend.logged_in %}
+              <label for="recipient-name" class="col-form-label">Attend as:</label>
               {% set user = backend.users[backend.user] %}
               {% include 'user_tile.html' %}
               <input type="hidden" name="{{event.link}}name" value="{{ backend.user }}">
             {% else %}
-              <p> Make sure you aren't attending twice!</p>
-              <p> (Here are the current accountless attendees) </p>
+              <p> Make sure you aren't attending twice, here are the current accountless attendees. </p>
               <br>
               {% for attendee in event.attendees%}
                 {% if attendee not in backend.users %}
                   <p>{{attendee}}</p>
                 {% endif %}
               {% endfor %}
-              <br>
+
+              <label for="recipient-name" class="col-form-label">Attend as:</label>
               <input type="text" name="{{event.link}}name" class="form-control" value="">
             {% endif %}
           </div>
