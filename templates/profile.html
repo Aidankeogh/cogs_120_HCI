@@ -125,7 +125,9 @@
                         <div class="tab-pane fade" id="followers">
                           {% for event in backend.users[user].events %}
                             {% set event = backend.events[event]%}
-                            {% include 'event_tile.html' %}
+                            {% if event.host != user %}
+                              {% include 'event_tile.html' %}
+                            {% endif %}
                           {% endfor %}
                         </br>
                       </br>
@@ -136,7 +138,9 @@
                         <div class="tab-pane fade" id="following">
                           {% for event in backend.users[user].events %}
                             {% set event = backend.events[event]%}
-                            {% include 'event_tile.html' %}
+                            {% if event.host == user %}
+                              {% include 'event_tile.html' %}
+                            {% endif %}
                           {% endfor %}
                         </br>
                       </br>

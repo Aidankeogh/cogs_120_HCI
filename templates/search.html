@@ -26,9 +26,8 @@
                   		    <div class="input-group">
                                   <div class="input-group-btn search-panel">
                                   <form method="GET">
-                                        <input type="text" class="form-control" name="query" placeholder="Search term...">
+                                        <input type="text" class="form-control" name="query" placeholder="{% if request.args.get('query') %} {{request.args.get('query')}} {% else %} Search term... {% endif %}">
                                         <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
-                                  </form>
                                   </div>
                               </div>
                           </div>
@@ -40,41 +39,37 @@
                         <li class="nav-item inactive"><div class="list-group-item">
                           <span>Filter By:</span>
                         </a></li>
-                          <li class="nav-item">
-                            <form method="GET">
-                            <button type="submit" name = "f_friend" value="{{ request.args.get('f_friend') != 'True' }}" class="list-group-item">
-                            <i class="fas fa-heart Friend"></i>
-                            Friends attending</button>
-                          </form>
+                          <li class="nav-item" data-toggle="buttons">
+                              <label class="btn list-group-item {% if request.args.get('f_friend') == 'True' %} active {% endif %}" >
+                                <input type="checkbox" name = "f_friend" value="True" autocomplete="off" {% if request.args.get('f_friend') == 'True' %} checked {% endif %}>
+                              <i class="fas fa-heart Friend"></i>
+                              Friends attending</label>
                           </li>
-                          <li class="nav-item">
-                            <form method="GET">
-                            <button type="submit" name = "f_faculty" value="{{ request.args.get('f_faculty') != 'True' }}" class="list-group-item">
+                          <li class="nav-item" data-toggle="buttons">
+                            <label class="btn list-group-item {% if request.args.get('f_faculty') == 'True' %} active {% endif %}">
+                              <input type="checkbox" name = "f_faculty" value="True" autocomplete="off" {% if request.args.get('f_faculty') == 'True' %} checked {% endif %}>
                             <i class="fas {{backend.badge_icons[0]}} Faculty"></i>
-                            Faculty attending</button>
-                          </form>
+                            Faculty attending</label>
                           </li>
-                          <li class="nav-item">
-                            <form method="GET">
-                            <button type="submit" name = "f_research" value="{{ request.args.get('f_research') != 'True' }}" class="list-group-item">
+                          <li class="nav-item" data-toggle="buttons">
+                            <label class="btn list-group-item {% if request.args.get('f_research') == 'True' %} active {% endif %}">
+                              <input type="checkbox" name = "f_research" value="True" autocomplete="off" {% if request.args.get('f_research') == 'True' %} checked {% endif %}>
                             <i class="fas {{backend.badge_icons[1]}} Research"></i>
-                            Researchers attending</button>
-                          </form>
+                            Researchers attending</label>
                           </li>
 
-                          <li class="nav-item">
-                            <form method="GET">
-                            <button type="submit" name = "f_clubs" value="{{ request.args.get('f_clubs') != 'True' }}" class="list-group-item">
+                          <li class="nav-item" data-toggle="buttons">
+                            <label class="btn list-group-item {% if request.args.get('f_clubs') == 'True' %} active {% endif %}">
+                              <input type="checkbox" name = "f_clubs" value="True" autocomplete="off" {% if request.args.get('f_clubs') == 'True' %} checked {% endif %}>
                             <i class="fas {{backend.badge_icons[2]}} Clubs"></i>
-                            Club leaders attending</button>
-                          </form>
+                            Club leaders attending</label>
                           </li>
 
-                          <li class="nav-item">
-                            <form method="GET">
-                            <button type="submit" name = "f_industry" value="{{ request.args.get('f_industry') != 'True' }}" class="list-group-item">
+                          <li class="nav-item" data-toggle="buttons">
+                            <label class="btn list-group-item {% if request.args.get('f_industry') == 'True' %} active {% endif %}">
+                              <input type="checkbox" name = "f_industry" value="True" autocomplete="off" {% if request.args.get('f_industry') == 'True' %} checked {% endif %}>
                             <i class="fas {{backend.badge_icons[3]}} Industry"></i>
-                            Industry members attending</button>
+                            Industry members attending</label>
                           </form>
                           </li>
                       </ul>

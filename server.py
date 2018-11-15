@@ -29,23 +29,23 @@ def search():
         eventlist = search_events(query,backend)
     if request.args.get('f_friend') == 'True':
         for e in backend['events'].keys():
-            if backend['events'][e]['friends'] == 0:
+            if e in eventlist and backend['events'][e]['friends'] == 0:
                 eventlist.remove(e)
     if request.args.get('f_faculty') == 'True':
         for e in backend['events'].keys():
-            if backend['events'][e]['badge_counts'][0] == 0:
+            if e in eventlist and backend['events'][e]['badge_counts'][0] == 0:
                 eventlist.remove(e)
     if request.args.get('f_research') == 'True':
         for e in backend['events'].keys():
-            if backend['events'][e]['badge_counts'][1] == 0:
+            if e in eventlist and backend['events'][e]['badge_counts'][1] == 0:
                 eventlist.remove(e)
     if request.args.get('f_clubs') == 'True':
             for e in backend['events'].keys():
-                if backend['events'][e]['badge_counts'][2] == 0:
+                if e in eventlist and backend['events'][e]['badge_counts'][2] == 0:
                     eventlist.remove(e)
     if request.args.get('f_industry') == 'True':
         for e in backend['events'].keys():
-            if backend['events'][e]['badge_counts'][3] == 0:
+            if e in eventlist and backend['events'][e]['badge_counts'][3] == 0:
                 eventlist.remove(e)
 
 
