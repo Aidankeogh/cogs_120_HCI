@@ -13,6 +13,7 @@ events:
     attendees:
     - john_doe
     - amanda
+    - !!python/unicode ' + dan the man'
     badge_counts:
     - 1
     - 1
@@ -20,13 +21,13 @@ events:
     - 1
     date: Tomorrow 08:00 pm - 02.06.2014
     description: Wine & Networking
-    friends: 1
+    friends: 0
     host: jane_doe
     hosting: false
     img_src: https://bootdey.com/img/Content/avatar/avatar2.png
     link: abc
     location: Rock Bottom
-    num_attendees: 3
+    num_attendees: 4
     title: Engineering Wine Society (EWS)
   efg:
     attendees:
@@ -40,7 +41,7 @@ events:
     - 1
     date: Next Tuesday 04:30 pm - 02.10.2014
     description: woof
-    friends: 2
+    friends: 0
     host: percy
     hosting: false
     img_src: https://bootdey.com/img/Content/avatar/avatar3.png
@@ -58,7 +59,7 @@ events:
     - 0
     date: Sometime
     description: Something
-    friends: 1
+    friends: 0
     host: john_doe
     hosting: false
     img_src: https://bootdey.com/img/Content/avatar/avatar5.png
@@ -77,7 +78,7 @@ events:
     - 0
     date: Today 05:30 pm - 02.05.2014
     description: Burgers and beer at chicago fire
-    friends: 2
+    friends: 0
     host: jane_doe
     hosting: false
     img_src: https://bootdey.com/img/Content/avatar/avatar1.png
@@ -88,32 +89,6 @@ events:
 logged_in: false
 user: null
 users:
-  !!python/unicode 'Aidan da Goob':
-    about: ''
-    badges:
-    - null
-    - null
-    - null
-    - null
-    email: !!python/unicode ''
-    events: []
-    friends: []
-    link: !!python/unicode 'Aidan da Goob'
-    name: !!python/unicode 'aidan da goob'
-    picture: https://bootdey.com/img/Content/avatar/avatar3.png
-  !!python/unicode 'aidan':
-    about: ''
-    badges:
-    - null
-    - null
-    - null
-    - null
-    email: !!python/unicode ''
-    events: []
-    friends: []
-    link: !!python/unicode 'aidan'
-    name: !!python/unicode 'AYYY DAN'
-    picture: https://bootdey.com/img/Content/avatar/avatar1.png
   amanda:
     about: I am a dork.
     badges:
@@ -131,19 +106,6 @@ users:
     link: amanda
     name: Amanda Smith
     picture: https://bootdey.com/img/Content/avatar/avatar3.png
-  !!python/unicode 'frank':
-    about: ''
-    badges:
-    - null
-    - null
-    - null
-    - null
-    email: !!python/unicode ''
-    events: []
-    friends: []
-    link: !!python/unicode 'frank'
-    name: !!python/unicode 'frizzank'
-    picture: https://bootdey.com/img/Content/avatar/avatar5.png
   jane_doe:
     about: I am Jane Doe.
     badges:
@@ -181,19 +143,6 @@ users:
     link: john_doe
     name: John Doe
     picture: https://bootdey.com/img/Content/avatar/avatar1.png
-  !!python/unicode 'kfdka':
-    about: ''
-    badges:
-    - null
-    - null
-    - null
-    - null
-    email: !!python/unicode ''
-    events: []
-    friends: []
-    link: !!python/unicode 'kfdka'
-    name: !!python/unicode 'dfk'
-    picture: https://bootdey.com/img/Content/avatar/avatar2.png
   percy:
     about: I am a dog.
     badges:

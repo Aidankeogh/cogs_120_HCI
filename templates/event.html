@@ -98,8 +98,12 @@
                                  <td class="field">Attendees</td>
                                  <td>
                                    {% for attendee in event.attendees %}
-                                    {% set user = backend.users[attendee] %}
-                                    {% include 'user_tile.html' %}
+                                      {% if attendee in backend.users %}
+                                        {% set user = backend.users[attendee] %}
+                                        {% include 'user_tile.html' %}
+                                      {% else %}
+                                        <p>{{attendee}}</p>
+                                      {% endif %}
                                    {% endfor %}
 																	 <button type="button" class="btn btn-default">See all attendees</button>
 																 </br>

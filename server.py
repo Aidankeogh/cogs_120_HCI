@@ -40,8 +40,11 @@ def search():
         if  'attend' in r: # attend event
             link = r['attend']
             e = backend['events'][link]
-            e['attendees'].append(r[link+'name'])
-            backend['users'][backend['user']]['events'].append(link)
+            if backend['logged_in']:
+                e['attendees'].append(r[link+'name'])
+                backend['users'][backend['user']]['events'].append(link)
+            elif " + " + r[link+'name'] not in e['attendees']:
+                e['attendees'].append(" + " + r[link+'name'])
         if  'unattend' in r: # attend event
             link = r['unattend']
             e = backend['events'][link]
@@ -67,8 +70,12 @@ def other_profile(something):
         if  'attend' in r: # attend event
             link = r['attend']
             e = backend['events'][link]
-            e['attendees'].append(r[link+'name'])
-            backend['users'][backend['user']]['events'].append(link)
+            if backend['logged_in']:
+                e['attendees'].append(r[link+'name'])
+                backend['users'][backend['user']]['events'].append(link)
+            elif " + " + r[link+'name'] not in e['attendees']:
+                e['attendees'].append(" + " + r[link+'name'])
+
         if  'unattend' in r: # attend event
             link = r['unattend']
             e = backend['events'][link]

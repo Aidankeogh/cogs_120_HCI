@@ -19,6 +19,15 @@
               {% include 'user_tile.html' %}
               <input type="hidden" name="{{event.link}}name" value="{{ backend.user }}">
             {% else %}
+              <p> Make sure you aren't attending twice!</p>
+              <p> (Here are the current accountless attendees) </p>
+              <br>
+              {% for attendee in event.attendees%}
+                {% if attendee not in backend.users %}
+                  <p>{{attendee}}</p>
+                {% endif %}
+              {% endfor %}
+              <br>
               <input type="text" name="{{event.link}}name" class="form-control" value="">
             {% endif %}
           </div>

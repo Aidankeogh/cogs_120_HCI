@@ -11,12 +11,13 @@ def get_tiles(backend):
         friends = 0
 
         for attendee in event['attendees'] + [event['host']]:
-            attendees += 1
-            if backend['logged_in'] and attendee in backend['users'][backend['user']]['friends']:
-                friends += 1
-            for i in range(len(badges)):
-                if backend['users'][attendee]['badges'][i]:
-                    badge_counts[i] += 1
+            attendees += 1    
+            if attendee in backend['users']:
+                if backend['logged_in'] and attendee in backend['users'][backend['user']]['friends']:
+                    friends += 1
+                for i in range(len(badges)):
+                    if backend['users'][attendee]['badges'][i]:
+                        badge_counts[i] += 1
 
         event['friends'] = friends
         event['num_attendees'] = attendees
