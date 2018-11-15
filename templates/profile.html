@@ -69,7 +69,7 @@
                     <div class="row">
                     {% if user == backend.user %}
                       <div class="col-xs-6" style="width: 50% !important;">
-                        <a href="/new_event" class="btn btn-success btn-lg btn-block"><strong>New Event</strong></a>
+                        <button data-toggle="modal" data-target="#NewEventModal"  class="btn btn-success btn-lg btn-block"><strong>New Event</strong></a>
                       </div>
                     {% endif %}
                       <div class="col-xs-6">
@@ -151,4 +151,5 @@
 </div>
   </body>
 {% include 'edit_profile_modal.html' %}
+{% include 'new_event_modal.html'%}
 {% endblock %}
