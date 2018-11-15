@@ -116,8 +116,9 @@
                                    </div>
                                    {% if event.host == backend.user %}
   																	 <button type="submit" data-toggle="modal" data-target="#{{ event.link }}EditModal" class="btn btn-toggle-info width-150">Update</button>
-                                     <button type="submit" class="btn btn-danger width-150 m-l-5">Delete Event</button>
-                                     {% include 'edit_event_modal.html'%}
+                                     <button type="submit" data-toggle="modal" data-target="#{{ event.link }}DeleteModal"class="btn btn-danger width-150 m-l-5">Delete Event</button>
+                                     {% include 'edit_event_modal.html' %}
+                                     {% include 'delete_event_modal.html' %}
                                    {% elif backend.user in event.attendees %}
                                      <button type="button" data-toggle="modal" data-target="#{{ event.link }}Unattend" class="btn btn-md btn-danger width-150">
                                        <span>

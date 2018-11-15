@@ -90,6 +90,17 @@ def other_profile(something):
             backend['users'][backend['user']]['events'].append(url)
             set_backend(backend)
             return redirect("/"+url, code=302)
+        if 'delete' in r:
+            link = r['delete']
+            e = backend['events'][link]
+            for user in e['attendees']:
+                backend['users'][user]['events'].remove(link)
+            backend['users'][e['host']]['events'].remove(link)
+            del backend['events'][link]
+            set_backend(backend)
+            return redirect("/", code=302)
+
+
         set_backend(backend)
 
     if something in backend['users']:
@@ -112,13 +123,31 @@ def login():
         set_backend(backend)
 
     if request.method == 'POST': #this block is only entered when the form is submitted
-        backend['logged_in'] = True
-        if request.form['username'] not in backend['users']:
-            backend['user'] = 'percy'
-        else:
-            backend['user'] = request.form['username']
-        set_backend(backend)
-        return redirect("/"+backend['user'], code=302)
+        r = request.form
+        if 'login' in r:
+            backend['logged_in'] = True
+            if request.form['username'] not in backend['users']:
+                backend['user'] = 'percy'
+            else:
+                backend['user'] = request.form['username']
+            set_backend(backend)
+            return redirect("/"+backend['user'], code=302)
+        if 'create' in r:
+            backend['users'][r['link']] = {}
+            u = backend['users'][r['link']]
+            u['name'] = r['name']
+            u['link'] = r['link']
+            u['badges'] = [None,None,None,None]
+            u['events'] = []
+            u['email'] = r['email']
+            u['about'] = ''
+            u['friends'] = []
+            u['picture'] = r['picture']
+            backend['user'] = r['link']
+            backend['logged_in'] = True
+            set_backend(backend)
+            return redirect("/"+backend['user'], code=302)
+
 
     return render_template('login.html', backend = backend)
 
