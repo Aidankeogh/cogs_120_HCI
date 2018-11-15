@@ -118,7 +118,7 @@ def other_profile(something):
         event = something
         return render_template('event.html', backend = backend, event=backend['events'][event])
     else:
-        return render_template('404')
+        return '404'
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

@@ -23,9 +23,9 @@
                     <div class="text-center">
                         <img id="profile_pic" src="{{ backend.users[user].picture }}" alt="Avatar" class="avatar img-circle" style="border: 0.35em groove #FFCD00;">
 
-                        <h2>{% if user == backend.user %}Hello, {% endif %}{{ backend.users[user].name }}</h2>
+                        <h2>{% if backend.user and user == backend.user %}Hello, {% endif %}{{ backend.users[user].name }}</h2>
                     </div>
-                    {% if user == backend.user %}
+                    {% if backend.user and user == backend.user %}
                       <div class="action-buttons center-block" style="width: 50% !important;">
                         <button data-toggle="modal" data-target="#{{ backend.users[user].link }}EditModal" class="btn btn-primary btn-block btn-md center-block" style="background-color: #182B49 !important;"><strong>Update Info</strong></a>
                       </div>
@@ -150,6 +150,8 @@
     </div>
 </div>
   </body>
-{% include 'edit_profile_modal.html' %}
-{% include 'new_event_modal.html'%}
+  {% if backend.user and user == backend.user %}
+    {% include 'edit_profile_modal.html' %}
+    {% include 'new_event_modal.html'%}
+  {% endif %}
 {% endblock %}

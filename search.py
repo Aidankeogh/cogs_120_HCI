@@ -1,7 +1,7 @@
 import string
 def textify(event,backend):
     text = event['host']
-    for attendee in event['attendees']:
+    for attendee in event['attendees'] + [event['host']]:
         text += ' ' + backend['users'][attendee]['name']
         for badge in backend['users'][attendee]['badges']:
             if badge:
