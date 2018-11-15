@@ -40,21 +40,43 @@
                         <li class="nav-item inactive"><div class="list-group-item">
                           <span>Filter By:</span>
                         </a></li>
-                        <li class="nav-item"><a href="#" id="friend_filter" class="list-group-item">
-                          <i class="fas fa-heart Friend"></i>
-                          Friends attending</a></li>
-                        <li class="nav-item"><a href="#" id="faculty_filter" class="list-group-item">
-                          <i class="fas {{backend.badge_icons[0]}} Faculty"></i>
-                          Faculty attending</a></li>
-                        <li class="nav-item"><a href="#" id="research_filter" class="list-group-item">
-                          <i class="fas {{backend.badge_icons[1]}} Research"></i>
-                          Researchers attending</a></li>
-                        <li class="nav-item"><a href="#" id="club_filter" class="list-group-item">
-                          <i class="fas {{backend.badge_icons[2]}} Clubs"></i>
-                          Club leaders attending</a></li>
-                        <li class="nav-item"><a href="#" id="industry_filter" class="list-group-item">
-                          <i class="fas {{backend.badge_icons[3]}} Industry"></i>
-                          Industry members attending</a></li>
+                          <li class="nav-item">
+                            <form method="GET">
+                            <button type="submit" name = "f_friend" value="{{ request.args.get('f_friend') != 'True' }}" class="list-group-item">
+                            <i class="fas fa-heart Friend"></i>
+                            Friends attending</button>
+                          </form>
+                          </li>
+                          <li class="nav-item">
+                            <form method="GET">
+                            <button type="submit" name = "f_faculty" value="{{ request.args.get('f_faculty') != 'True' }}" class="list-group-item">
+                            <i class="fas {{backend.badge_icons[0]}} Faculty"></i>
+                            Faculty attending</button>
+                          </form>
+                          </li>
+                          <li class="nav-item">
+                            <form method="GET">
+                            <button type="submit" name = "f_research" value="{{ request.args.get('f_research') != 'True' }}" class="list-group-item">
+                            <i class="fas {{backend.badge_icons[1]}} Research"></i>
+                            Researchers attending</button>
+                          </form>
+                          </li>
+
+                          <li class="nav-item">
+                            <form method="GET">
+                            <button type="submit" name = "f_clubs" value="{{ request.args.get('f_clubs') != 'True' }}" class="list-group-item">
+                            <i class="fas {{backend.badge_icons[2]}} Clubs"></i>
+                            Club leaders attending</button>
+                          </form>
+                          </li>
+
+                          <li class="nav-item">
+                            <form method="GET">
+                            <button type="submit" name = "f_industry" value="{{ request.args.get('f_industry') != 'True' }}" class="list-group-item">
+                            <i class="fas {{backend.badge_icons[3]}} Industry"></i>
+                            Industry members attending</button>
+                          </form>
+                          </li>
                       </ul>
                     </div>
                     </br>
