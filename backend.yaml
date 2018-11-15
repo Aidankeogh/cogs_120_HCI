@@ -181,6 +181,19 @@ users:
     link: john_doe
     name: John Doe
     picture: https://bootdey.com/img/Content/avatar/avatar1.png
+  !!python/unicode 'kfdka':
+    about: ''
+    badges:
+    - null
+    - null
+    - null
+    - null
+    email: !!python/unicode ''
+    events: []
+    friends: []
+    link: !!python/unicode 'kfdka'
+    name: !!python/unicode 'dfk'
+    picture: https://bootdey.com/img/Content/avatar/avatar2.png
   percy:
     about: I am a dog.
     badges:
