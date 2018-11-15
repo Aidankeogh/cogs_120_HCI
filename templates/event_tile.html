@@ -19,7 +19,7 @@
 
     <div class="btn-toolbar pull-right activity-actions inline-block">
       {% if event.host == backend.user %}
-        <button type="button" data-toggle="modal" data-target="#{{ event.link }}Modal" class="btn btn-md btn-light btn-block pull-right">
+        <button type="button" data-toggle="modal" data-target="#{{ event.link }}EditModal" class="btn btn-md btn-light btn-block pull-right">
           <span><span class="glyphicon glyphicon-edit"></span><strong> Edit </strong></span>
         </button>&nbsp;
         {% include 'edit_event_modal.html' %}

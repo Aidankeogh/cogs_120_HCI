@@ -1,0 +1,77 @@
+user: percy
+badges: [Faculty, Research, Clubs, Industry]
+events:
+  xyz:
+    title: Beer + Burgers
+    link: xyz
+    host: jane_doe
+    img_src: https://bootdey.com/img/Content/avatar/avatar1.png
+    attendees: [percy, john_doe]
+    date: Today 05:30 pm - 02.05.2014
+    location: Chicago Fire Grill
+    description: Burgers and beer at chicago fire
+  abc:
+    title: Engineering Wine Society (EWS)
+    link: abc
+    host: jane_doe
+    img_src: https://bootdey.com/img/Content/avatar/avatar2.png
+    attendees: [john_doe, amanda]
+    date: Tomorrow 08:00 pm - 02.06.2014
+    location: Rock Bottom
+    description: Wine & Networking
+  efg:
+    title: Cocktails
+    link: efg
+    host: percy
+    img_src: https://bootdey.com/img/Content/avatar/avatar3.png
+    attendees: [jane_doe, john_doe, amanda]
+    date: Next Tuesday 04:30 pm - 02.10.2014
+    location: BJ's
+    description: woof
+  ev4:
+    title: event4
+    link: ev4
+    host: john_doe
+    img_src: https://bootdey.com/img/Content/avatar/avatar5.png
+    attendees: [percy]
+    date: Sometime
+    location: Somewhere
+    description: Something
+
+users:
+  jane_doe:
+    name: Jane Doe
+    link: jane_doe
+    email: jane_doe@generic.com
+    badges: [CSE 190 professor,~,~,~]
+    friends: [percy,john_doe]
+    about: I am Jane Doe.
+    picture: https://bootdey.com/img/Content/avatar/avatar5.png
+    events: [xyz, abc, efg]
+  john_doe:
+    name: John Doe
+    link: john_doe
+    email: john_doe@generic.com
+    badges: [~,Deep learning researcher,~,~]
+    friends: [percy,jane_doe]
+    about: I am John Doe.
+    picture: https://bootdey.com/img/Content/avatar/avatar1.png
+    events: [efg, ev4, xyz, abc]
+  percy:
+    name: Percy
+    link: percy
+    email: percy@pal.dog
+    badges: [~,~,dog club,~]
+    friends: [john_doe,amanda]
+    about: I am a dog.
+    picture: /static/percy.jpg
+    events: [xyz, efg, ev4]
+  amanda:
+    name: Amanda Smith
+    link: amanda
+    email: amand@s.mith
+    badges: [ ~, ~, ~, Recruiter at GAP]
+    friends: [percy,jane_doe]
+    about: I am a dork.
+    picture: https://bootdey.com/img/Content/avatar/avatar3.png
+    events: [efg, abc]

@@ -1,0 +1,39 @@
+
+{% set curr = backend.users[backend.user] %}
+<div class="modal fade" id="{{ curr.link }}EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Profile For: {{ curr.link }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post">
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Screen Name:</label>
+            <input type="text" class="form-control" value="{{ curr.name }}" name="{{ curr.link }}name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Profile Picture:</label>
+            <input type="text" class="form-control" value="{{ curr.picture }}" name="{{ curr.link }}picture">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">About Me:</label>
+            <input type="text" class="form-control" value="{{ curr.about }}" name="{{ curr.link }}about">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Email:</label>
+            <input type="text" class="form-control" value="{{ curr.email }}" name="{{ curr.link }}email">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <div class="form-group">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" name="edituser" value="{{curr.link}}" class="btn btn-primary">Update information</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

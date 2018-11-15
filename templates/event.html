@@ -115,7 +115,7 @@
                                      <button type="button" class="btn btn-md btn-toggle-hosting width-150 pull-left"><span><span class="glyphicon glyphicon-copy"></span><strong> Copy Link</strong></span></button>&nbsp;
                                    </div>
                                    {% if event.host == backend.user %}
-  																	 <button type="submit" data-toggle="modal" data-target="#{{ event.link }}Modal" class="btn btn-toggle-info width-150">Update</button>
+  																	 <button type="submit" data-toggle="modal" data-target="#{{ event.link }}EditModal" class="btn btn-toggle-info width-150">Update</button>
                                      <button type="submit" class="btn btn-danger width-150 m-l-5">Delete Event</button>
                                      {% include 'edit_event_modal.html'%}
                                    {% elif backend.user in event.attendees %}

@@ -61,6 +61,13 @@ def other_profile(something):
             link = r['unattend']
             e = backend['events'][link]
             e['attendees'].remove(r[link+'name'])
+        if 'edituser' in r:
+            link = r['edituser']
+            u = backend['users'][link]
+            u['name'] = r[link+'name']
+            u['picture'] = r[link+'picture']
+            u['about'] = r[link+'about']
+            u['email'] = r[link+'email']
         set_backend(backend)
 
     if something in backend['users']:
@@ -75,6 +82,13 @@ def other_profile(something):
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     backend = get_backend()
+    if backend['logged_in'] :
+        print 'here'
+        backend['user'] = None
+        backend['logged_in'] = False
+        print backend
+        set_backend(backend)
+
     if request.method == 'POST': #this block is only entered when the form is submitted
         backend['logged_in'] = True
         if request.form['username'] not in backend['users']:
@@ -82,6 +96,7 @@ def login():
         else:
             backend['user'] = request.form['username']
         set_backend(backend)
+        return redirect("/"+backend['user'], code=302)
 
     return render_template('login.html', backend = backend)
 

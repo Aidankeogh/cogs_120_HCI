@@ -38,16 +38,16 @@ events:
     - 1
     - 1
     - 1
-    date: Next Tuesday 04:30 pm - 02.10.2014
-    description: woof
+    date: !!python/unicode 'Next Tuesday 04:30 pm - 02.10.2014'
+    description: !!python/unicode 'woof'
     friends: 2
     host: percy
     hosting: true
     img_src: https://bootdey.com/img/Content/avatar/avatar3.png
     link: efg
-    location: BJ's
+    location: !!python/unicode 'BEEJAYZ''z'
     num_attendees: 4
-    title: Cocktails
+    title: !!python/unicode 'Cocktails'
   ev4:
     attendees: []
     badge_counts:
@@ -68,6 +68,7 @@ events:
   xyz:
     attendees:
     - john_doe
+    - !!python/unicode 'percy'
     badge_counts:
     - 1
     - 1
@@ -141,18 +142,19 @@ users:
     name: John Doe
     picture: https://bootdey.com/img/Content/avatar/avatar1.png
   percy:
-    about: I am a dog.
+    about: !!python/unicode 'I am a dog.'
     badges:
     - null
     - null
     - dog club
     - null
-    email: percy@pal.dog
+    email: !!python/unicode 'percy@pal.dog'
     events:
     - efg
+    - !!python/unicode 'xyz'
     friends:
     - john_doe
     - amanda
     link: percy
-    name: Percy
-    picture: /static/percy.jpg
+    name: !!python/unicode 'Percy THE DOG? '
+    picture: !!python/unicode '/static/percy.jpg'

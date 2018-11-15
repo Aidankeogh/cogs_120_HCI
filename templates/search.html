@@ -107,19 +107,6 @@
 <script>
 
 $(document).ready(function(){
-
-  attended = function(){
-    $(this).replaceWith(`
-      <button type="button" class="btn btn-md btn-light btn-block pull-right"><span><strong> Attended! </strong></span></button>&nbsp;
-    `)
-  };
-  unattended = function(){
-    $(this).replaceWith(`
-      <button type="button" class="btn btn-md btn-light btn-block pull-right"><span><strong> Unattended... </strong></span></button>&nbsp;
-    `).link
-  };
-  $(".unattend_btn").click(attended);
-  $(".attend_btn").click(unattended);
   $("#friend_filter").click(function(){
     $(".event_tile").show()
   });
