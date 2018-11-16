@@ -47,7 +47,7 @@
                           </li>
                           <li class="nav-item" data-toggle="buttons">
                             <label class="btn list-group-item {% if request.args.get('f_faculty') == 'True' %} active {% endif %}">
-                              <input type="checkbox" name = "f_faculty" value="True" autocomplete="off" {% if request.args.get('f_faculty') == 'True' %} checked {% endif %}>
+                              <input type="checkbox"  onchange="submit()" name = "f_faculty" value="True" autocomplete="off" {% if request.args.get('f_faculty') == 'True' %} checked {% endif %}>
                             <i class="fas {{backend.badge_icons[0]}} Faculty"></i>
                             Faculty attending</label>
                           </li>

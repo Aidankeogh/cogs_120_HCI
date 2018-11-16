@@ -11,9 +11,14 @@
       </div>
       <div class="modal-body">
 				{% for attendee in event.attendees %}
-					{% set user = backend.users[attendee] %}
-					{% include 'user_tile.html' %}
-					<br>
+          {% if attendee in backend.users %}
+  					{% set user = backend.users[attendee] %}
+  					{% include 'user_tile.html' %}
+  					<br>
+          {% else %}
+            {{attendee}}
+            <br>
+          {% endif %}
 				{% endfor %}
       </div>
       <div class="modal-footer">

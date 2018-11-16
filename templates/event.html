@@ -97,19 +97,27 @@
                               <tr>
                                  <td class="field">Attendees</td>
                                  <td>
-                                   {% if event.attendees|length >= 3 %}
-                                     {% for i in range(3) %}
-                                       {% set user = backend.users[event.attendees[i]] %}
-                                       {% include 'user_tile.html' %}
-                                     {% endfor %}
-                                     </br>
-                                     <a href="#" data-toggle="modal" data-target="#{{ event.link }}AllAttendeesModal" class="pull-left">See All Attendees</a>
+                                   {% if event.attendees|length >= 5 %}
+                                      {% for i in range(5) %}
+                                        {% if event.attendees[i] in backend.users %}
+                                          {% set user = backend.users[event.attendees[i]] %}
+                                          {% include 'user_tile.html' %}
+                                        {% else %}
+                                          <p>{{event.attendees[i]}}</p>
+                                          {% endif %}
+                                        {% endfor %}
+                                      </br>
+                                      <a href="#" data-toggle="modal" data-target="#{{ event.link }}AllAttendeesModal" class="pull-left">See All Attendees</a>
                                    {% else %}
                                      {% for attendee in event.attendees %}
-                                       {% set user = backend.users[attendee] %}
-                                       {% include 'user_tile.html' %}
+                                       {% if attendee in backend.users %}
+                                         {% set user = backend.users[attendee] %}
+                                         {% include 'user_tile.html' %}
+                                       {% else %}
+                                         <p>{{attendee}}</p>
+                                       {% endif %}
                                        {% if event.attendees|length > 1 %}
-                                        <br>
+                                         <br>
                                        {% endif %}
                                      {% endfor %}
                                    {% endif %}

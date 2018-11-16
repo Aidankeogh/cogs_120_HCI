@@ -19,14 +19,6 @@
               {% include 'user_tile.html' %}
               <input type="hidden" name="{{event.link}}name" value="{{ backend.user }}">
             {% else %}
-              <p> Make sure you aren't attending twice, here are the current accountless attendees. </p>
-              <br>
-              {% for attendee in event.attendees%}
-                {% if attendee not in backend.users %}
-                  <p>{{attendee}}</p>
-                {% endif %}
-              {% endfor %}
-
               <label for="recipient-name" class="col-form-label">Attend as:</label>
               <input type="text" name="{{event.link}}name" class="form-control" value="">
             {% endif %}
@@ -37,6 +29,7 @@
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="submit" name="attend" value="{{event.link}}" class="btn btn-success">Attend event</button>
         </div>
+      </form>
       </div>
     </div>
   </div>

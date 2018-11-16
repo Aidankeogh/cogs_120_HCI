@@ -176,8 +176,9 @@
     {% include 'new_event_modal.html'%}
   {% endif %}
 
-  {% include 'add_friend_modal.html' %}
-  {% include 'unfriend_modal.html' %}
-  {% include 'all_friends_modal.html' %}
-
+  {% if backend.logged_in%}
+    {% include 'add_friend_modal.html' %}
+    {% include 'unfriend_modal.html' %}
+    {% include 'all_friends_modal.html' %}
+  {% endif %}
 {% endblock %}
