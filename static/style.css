@@ -251,7 +251,7 @@ html,body{
 		}
 
 		.btn-toggle-hosting {
-		  background-color: #C69214;
+		  background-color: #daa520;
 		  color: #fff;
 		}
 		/*
@@ -304,7 +304,8 @@ html,body{
 		  -moz-border-radius: 2px;
 		  -webkit-border-radius: 2px;
 		  border-radius: 2px;
-		  width: 32px;
+		  width: 64px;
+			border-color: black !important;
 		}
 		.activity-item > i {
 		  font-size: 18px;

@@ -1,21 +1,24 @@
+{% set curr = backend.users[user] %}
 
-<div class="modal fade" id="{{ event.link }}DeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="{{ backend.users[backend.user].link }}AllFriendsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">Delete Event: {{event.title}}</h3>
+        <h3 class="modal-title" id="exampleModalLabel">Friends</h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form method="post">
-        Are you sure you want to delete this event?
+				{% for friend in curr.friends %}
+					{% set user = backend.users[friend] %}
+					{% include 'user_tile.html' %}
+					<br>
+				{% endfor %}
       </div>
       <div class="modal-footer">
-        <div class="form-group pull-right">
+        <div class="form-group">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" name="delete" value="{{event.link}}" class="btn btn-danger">Delete event</button>
         </div>
       </div>
     </div>

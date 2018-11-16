@@ -112,6 +112,22 @@ def other_profile(something):
             u['picture'] = r[link+'picture']
             u['about'] = r[link+'about']
             u['email'] = r[link+'email']
+            if r[link+'Faculty'] == '' or r[link+'Faculty'] == 'None':
+                u['badges'][0] = None
+            else:
+                u['badges'][0] = r[link+'Faculty']
+            if r[link+'Research'] == '' or r[link+'Research'] == 'None':
+                u['badges'][1] = None
+            else:
+                u['badges'][1] = r[link+'Research']
+            if r[link+'Clubs'] == '' or r[link+'Clubs'] == 'None':
+                u['badges'][2] = None
+            else:
+                u['badges'][2] = r[link+'Clubs']
+            if r[link+'Industry'] == '' or r[link+'Industry'] == 'None':
+                u['badges'][3] = None
+            else:
+                u['badges'][3] = r[link+'Industry']
         if 'newevent' in r:
             url = create_url()
             while(url in backend['events']):
@@ -138,8 +154,16 @@ def other_profile(something):
             del backend['events'][link]
             set_backend(backend)
             return redirect("/", code=302)
-
-
+        if 'addfriend' in r:
+            link = r['addfriend']
+            u = backend['users'][link]
+            u['friends'].append(r[link+'friend'])
+            print u['friends']
+        if 'unfriend' in r:
+            link = r['unfriend']
+            u = backend['users'][link]
+            u['friends'].remove(r[link+'unfriend'])
+            print u['friends']
         set_backend(backend)
 
     if something in backend['users']:

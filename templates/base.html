@@ -41,7 +41,7 @@
             {% endif %}
         {% endif %}
         <li><a href="/login" class="navbar-txt">
-            {% if not backend.logged_in %}
+            {% if backend.logged_in == False %}
               {% if 'login' in request.url %} <strong id="rcorners1">Log In</strong></a></li>
               {% else %} <strong>Log In</strong></a></li>
               {% endif %}

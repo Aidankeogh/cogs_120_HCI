@@ -71,7 +71,7 @@
 																<tr>
                                  <td class="field">Where</td>
                                  <td>
-																	 <a href="#">{{ event.location }}</a>
+																	 {{ event.location }}
 																 </td>
 															 </tr>
 																 <tr>
@@ -97,15 +97,20 @@
                               <tr>
                                  <td class="field">Attendees</td>
                                  <td>
-                                   {% for attendee in event.attendees %}
-                                      {% if attendee in backend.users %}
-                                        {% set user = backend.users[attendee] %}
-                                        {% include 'user_tile.html' %}
-                                      {% else %}
-                                        <p>{{attendee}}</p>
-                                      {% endif %}
-                                   {% endfor %}
-																	 <button type="button" class="btn btn-default">See all attendees</button>
+                                   {% if event.attendees|length >= 3 %}
+                                     {% for i in range(3) %}
+                                       {% set user = backend.users[event.attendees[i]] %}
+                                       {% include 'user_tile.html' %}
+                                     {% endfor %}
+                                     </br>
+                                     <a href="#" data-toggle="modal" data-target="#{{ event.link }}AllAttendeesModal" class="pull-left">See All Attendees</a>
+                                   {% else %}
+                                     {% for attendee in event.attendees %}
+                                       {% set user = backend.users[attendee] %}
+                                       {% include 'user_tile.html' %}
+                                       <br>
+                                     {% endfor %}
+                                   {% endif %}
 																 </br>
 															 </br>
                                  </td>
@@ -160,7 +165,7 @@
                                      {% include 'unattend_event_modal.html' %}
                                    {% else %}
                                      <button type="button" data-toggle="modal" data-target="#{{ event.link }}Attend" class="btn btn-md btn-toggle-following width-150"><span>
-                                       <span class="glyphicon glyphicon-check" style="vertical-align: center;"></span></span><a href="#"><strong> Attend </strong></a>
+                                       <span class="glyphicon glyphicon-check" style="vertical-align: center;"></span></span><strong> Attend </strong>
                                      </button>
                                      {% include 'attend_event_modal.html'%}
                                    {% endif%}
@@ -184,4 +189,5 @@
 	</div>
 </div>
 
+{% include 'all_attendees_modal.html' %}
 {% endblock %}

@@ -1,12 +1,14 @@
-<div class="media activity-item event_tile {% for i in range(4) %}{% if event.badge_counts[i] > 0 %} {{backend.badges[i]}}_tile{% endif %}{% endfor %}" >
+<div class="media activity-item event_tile {% for i in range(4) %}{% if event.badge_counts[i] > 0 %} {{backend.badges[i]}}_tile{% endif %}{% endfor %}">
     <a href="/{{ event.host }}" class="pull-left">
         <img src="{{ backend.users[event.host].picture }}" alt="Avatar" class="media-object avatar">
     </a>
-
     <div class="media-body">
-        <p class="activity-title"><a href="/{{ event.link }}">{{ event.title }}</a> at <a href="#">{{ event.location }}</a></p>
-        <small class="text-muted">{{ event.date }}</small>
-      </br></br>
+        <a href = "/{{ event.link }}" style="font-weight: bold">
+        <stong>{{ event.title }} at {{ event.location }}</strong>
+        </button></a>
+        <h5 class="text-muted">{{ event.date }}</h5>
+
+        </br>
         {{event.num_attendees}} <i class="fas fa-user"></i>
         {% if event.friends > 0 %}
           | {{event.friends}} <i class="fas fa-heart Friend"></i>

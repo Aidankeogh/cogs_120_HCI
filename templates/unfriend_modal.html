@@ -1,0 +1,26 @@
+{% set friend = backend.users[user] %}
+
+<div class="modal fade" id="{{ friend.link }}UnfriendModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Unfriend: {{friend.name}}</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+				{% set user = backend.users[backend.user] %}
+        <form method="post">
+           Are you sure you want to unfriend {{friend.name}}?
+           <input type="hidden" name="{{user.link}}unfriend" value="{{ friend.link }}">
+      </div>
+      <div class="modal-footer">
+        <div class="form-group">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="submit" name="unfriend" value="{{user.link}}" class="btn btn-danger">Unfriend</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

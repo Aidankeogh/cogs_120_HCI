@@ -26,7 +26,7 @@
                   		    <div class="input-group">
                                   <div class="input-group-btn search-panel">
                                   <form method="GET">
-                                        <input type="text" class="form-control" name="query" value="{% if request.args.get('query') %}{{request.args.get('query')}}{% endif %}" placeholder="Search term..."">
+                                        <input type="text" class="form-control" name="query" value="{% if request.args.get('query') %}{{request.args.get('query')}}{% endif %}" placeholder="Search term...">
                                         <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
                                   </div>
                               </div>
@@ -41,7 +41,7 @@
                         </a></li>
                           <li class="nav-item" data-toggle="buttons">
                               <label class="btn list-group-item {% if request.args.get('f_friend') == 'True' %} active {% endif %}" >
-                                <input type="checkbox" name = "f_friend" value="True" autocomplete="off" {% if request.args.get('f_friend') == 'True' %} checked {% endif %}>
+                                <input type="checkbox" onchange="submit()" name="f_friend" value="True" autocomplete="off" {% if request.args.get('f_friend') == 'True' %} checked {% endif %}>
                               <i class="fas fa-heart Friend"></i>
                               Friends attending</label>
                           </li>
@@ -53,21 +53,19 @@
                           </li>
                           <li class="nav-item" data-toggle="buttons">
                             <label class="btn list-group-item {% if request.args.get('f_research') == 'True' %} active {% endif %}">
-                              <input type="checkbox" name = "f_research" value="True" autocomplete="off" {% if request.args.get('f_research') == 'True' %} checked {% endif %}>
+                              <input type="checkbox" onchange="submit()" name = "f_research" value="True" autocomplete="off" {% if request.args.get('f_research') == 'True' %} checked {% endif %}>
                             <i class="fas {{backend.badge_icons[1]}} Research"></i>
                             Researchers attending</label>
                           </li>
-
                           <li class="nav-item" data-toggle="buttons">
                             <label class="btn list-group-item {% if request.args.get('f_clubs') == 'True' %} active {% endif %}">
-                              <input type="checkbox" name = "f_clubs" value="True" autocomplete="off" {% if request.args.get('f_clubs') == 'True' %} checked {% endif %}>
+                              <input type="checkbox" onchange="submit()" name = "f_clubs" value="True" autocomplete="off" {% if request.args.get('f_clubs') == 'True' %} checked {% endif %}>
                             <i class="fas {{backend.badge_icons[2]}} Clubs"></i>
                             Club leaders attending</label>
                           </li>
-
                           <li class="nav-item" data-toggle="buttons">
                             <label class="btn list-group-item {% if request.args.get('f_industry') == 'True' %} active {% endif %}">
-                              <input type="checkbox" name = "f_industry" value="True" autocomplete="off" {% if request.args.get('f_industry') == 'True' %} checked {% endif %}>
+                              <input type="checkbox" onchange="submit()" name = "f_industry" value="True" autocomplete="off" {% if request.args.get('f_industry') == 'True' %} checked {% endif %}>
                             <i class="fas {{backend.badge_icons[3]}} Industry"></i>
                             Industry members attending</label>
                           </form>
@@ -84,11 +82,11 @@
                               {% include 'event_tile.html' %}
                             {% endfor %}
                             {% if eventlist|length == 0%}
-                              <p class="text-center">Sorry, we couldn't find any happy hours like that  .</p>
+                              <br><br>
+                              <h4 class="text-center">Sorry, we couldn't find any happy hour events matching your search</h4>
                             {% endif %}
                           </br>
                         </br>
-                            <button type="button" class="btn btn-default center-block">Load more events</button>
                         </div>
                     </div>
                 </div>
@@ -97,9 +95,7 @@
     </div>
 </div>
   </body>
-
 <script>
-
 $(document).ready(function(){
   $("#friend_filter").click(function(){
     $(".event_tile").show()
@@ -122,5 +118,4 @@ $(document).ready(function(){
   });
 });
 </script>
-
 {% endblock %}

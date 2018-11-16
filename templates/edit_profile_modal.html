@@ -4,7 +4,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit Profile For: {{ curr.link }}</h5>
+        <h3 class="modal-title" id="exampleModalLabel">Edit Profile</h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -27,11 +27,32 @@
             <label for="recipient-name" class="col-form-label">Email:</label>
             <input type="text" class="form-control" value="{{ curr.email }}" name="{{ curr.link }}email">
           </div>
+
+          <div class="form-group">
+            <i class="fas {{backend.badge_icons[0]}} Faculty"></i>
+            <label for="recipient-name" class="col-form-label">Faculty Tag:</label>
+            <input type="text" class="form-control" value="{{ curr.badges[0] }}" name="{{ curr.link }}Faculty">
+          </div>
+          <div class="form-group">
+            <i class="fas {{backend.badge_icons[1]}} Research"></i>
+            <label for="recipient-name" class="col-form-label">Research Tag:</label>
+            <input type="text" class="form-control" value="{{ curr.badges[1] }}" name="{{ curr.link }}Research">
+          </div>
+          <div class="form-group">
+            <i class="fas {{backend.badge_icons[2]}} Clubs"></i>
+            <label for="recipient-name" class="col-form-label">Club Tag:</label>
+            <input type="text" class="form-control" value="{{ curr.badges[2] }}" name="{{ curr.link }}Clubs">
+          </div>
+          <div class="form-group">
+            <i class="fas {{backend.badge_icons[3]}} Industry"></i>
+            <label for="recipient-name" class="col-form-label">Industry Tag:</label>
+            <input type="text" class="form-control" value="{{ curr.badges[3] }}" name="{{ curr.link }}Industry">
+          </div>
       </div>
       <div class="modal-footer">
-        <div class="form-group">
+        <div class="form-group pull-right">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" name="edituser" value="{{curr.link}}" class="btn btn-primary">Update information</button>
+          <button type="submit" name="edituser" value="{{curr.link}}" class="btn btn-success">Update information</button>
         </div>
       </div>
     </div>

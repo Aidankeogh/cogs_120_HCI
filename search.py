@@ -10,10 +10,10 @@ def textify(event,backend):
     text += ' ' + event['title']
     text += ' ' + event['description']
     text += ' ' + event['location']
-    return text.lower().translate(None,string.punctuation).split()
+    return str(text).lower().translate(None,string.punctuation).split()
 
 def search_events(query, backend):
-    query = query.split()
+    query = str(query).lower().split()
     results = []
     for link, event in backend['events'].items():
         event_text = textify(event,backend)

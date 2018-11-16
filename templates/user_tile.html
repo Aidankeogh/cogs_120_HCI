@@ -1,13 +1,14 @@
 <div class="media user-following">
-    <img src="{{ user.picture }}" alt="User Avatar" class="media-object pull-left">
+    <img href="/{{ user.link }}" src="{{ user.picture }}" alt="User Avatar" class="media-object pull-left" style="width: 60px; height: 55px; border-color: black;">
     <div class="media-body">
-        <a href="/{{ user.link }}">{{ user.name }}</a>  -
-        {% for i in range(4) %}
-          {% if user.badges[i]%}
-          <i class="fas {{backend.badge_icons[i]}} {{backend.badges[i]}}" title=" {{backend.badges[i]}}"></i>
-          <span>  {{user.badges[i]}}</span>
-          <br>
-          {% endif %}
-        {% endfor %}
+        <a href="/{{ user.link }}"><h5>{{ user.name }}</h5></a>
+        {% if user.badges|length > 0 %}
+          {% for i in range(4) %}
+            {% if user.badges[i]%}
+            <i class="fas {{backend.badge_icons[i]}} {{backend.badges[i]}}" title=" {{backend.badges[i]}}"></i>
+            <span>  {{user.badges[i]}}</span></br>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
     </div>
 </div>

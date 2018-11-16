@@ -29,6 +29,18 @@
                       <div class="action-buttons center-block" style="width: 50% !important;">
                         <button data-toggle="modal" data-target="#{{ backend.users[user].link }}EditModal" class="btn btn-primary btn-block btn-md center-block" style="background-color: #182B49 !important;"><strong>Update Info</strong></a>
                       </div>
+                    {% elif backend.logged_in and user not in backend.users[backend.user].friends %}
+                    <div class="action-buttons center-block" style="width: 50% !important;">
+                      <button type="button" value="{{ backend.users[user].link }}" class="btn btn-md btn-primary btn-block center-block" style="background-color: #182B49 !important;" data-toggle="modal" data-target="#{{ backend.users[user].link }}AddFriendModal">
+                        <span><span class="glyphicon glyphicon-check"></span><strong> Add Friend </strong></span>
+                      </button>&nbsp;
+                    </div>
+                    {% elif backend.logged_in and user in backend.users[backend.user].friends %}
+                    <div class="action-buttons center-block" style="width: 50% !important;">
+                      <button type="button" value="{{ backend.users[user].link }}" class="btn btn-md btn-default btn-block center-block" data-toggle="modal" data-target="#{{ backend.users[user].link }}UnfriendModal">
+                        <span><span class="glyphicon glyphicon-check"></span><strong> Friends </strong></span>
+                      </button>&nbsp;
+                    </div>
                     {% endif %}
                     <div class="section" id="about_me">
                         <h3>About Me</h3>
@@ -43,6 +55,23 @@
                           <br>
                           {% endif %}
                         {% endfor %}
+                    </div>
+                    <div class="section" id="friends">
+                        <h3>Friends</h3>
+                        {% set friends = backend.users[user].friends %}
+                        {% if friends|length >= 5 %}
+                          {% for i in range(5) %}
+                            {% set user = backend.users[friends[i]] %}
+                            {% include 'user_tile.html' %}
+                          {% endfor %}
+                          <a href="#" data-toggle="modal" data-target="#{{ backend.users[backend.user].link }}AllFriendsModal" class="pull-left">See All Friends</a>
+                        {% else %}
+                          {% for i in range(friends|length) %}
+                            {% set user = backend.users[friends[i]] %}
+                            {% include 'user_tile.html' %}
+                            <br>
+                          {% endfor %}
+                        {% endif %}
                     </div>
                     <div class="section" id="contact_info">
                         <h3>Contact Info</h3>
@@ -66,85 +95,73 @@
 
                 </br>
                   <div class="action-buttons" style="margin: auto; max-width: 300px;">
-                    <div class="row">
                     {% if user == backend.user %}
-                      <div class="col-xs-6" style="width: 50% !important;">
-                        <button data-toggle="modal" data-target="#NewEventModal"  class="btn btn-success btn-lg btn-block"><strong>New Event</strong></a>
+                      <div class="action-buttons center-block" style="width: 50% !important;">
+                        <button data-toggle="modal" data-target="#NewEventModal"  class="btn btn-success btn-lg btn-block" style="margin: auto;"><strong>New Event</strong></button>
                       </div>
                     {% endif %}
-                      <div class="col-xs-6">
-                        <div class="dropdown">
-                          <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown">Sort by &nbsp;<span class="caret"></span></button>
-                          <ul class="dropdown-menu">
-                            <!--<input class="form-control" id="myInput" type="text" placeholder="Search..">-->
-                            <li><a href="#">
-                              <span class="glyphicon glyphicon-user badge_icon"> </span>
-                              Total attendees</a></li>
-                            <li><a href="#">
-                              <span class="glyphicon glyphicon-heart-empty Friend"> </span>
-                              Friends attending</a></li>
-                            <li><a href="#">
-                              <span class="glyphicon glyphicon-tag Faculty"> </span>
-                              Faculty attending</a></li>
-                            <li><a href="#">
-                              <span class="glyphicon glyphicon-tag Research"> </span>
-                              Researchers attending</a></li>
-                            <li><a href="#">
-                              <span class="glyphicon glyphicon-tag Clubs"> </span>
-                              Club leaders attending</a></li>
-                            <li><a href="#">
-                              <span class="glyphicon glyphicon-tag Industry"> </span>
-                              Industry members attending</a></li>
-                            <li><a href="#">
-                              <span class="glyphicon glyphicon-time badge_icon"> </span>
-                              Most recent</a></li>
-                          </ul>
-                        </div>
-                      </div>
                     </div>
                   </div>
-                    </br></br></br>
+                    </br>
                     <ul class="nav nav-pills nav-pills-custom-minimal custom-minimal-bottom">
-                        <li class="active"><a href="#all" data-toggle="tab">All</a></li>
-                        <li><a href="#followers" data-toggle="tab">Attending</a></li>
-                        <li><a href="#following" data-toggle="tab">Hosting</a></li>
+                        <li class="active"><a href="#all" data-toggle="tab"><h4>All</h4></a></li>
+                        <li><a href="#followers" data-toggle="tab"><h4>Attending</h4></a></li>
+                        <li><a href="#following" data-toggle="tab"><h4>Hosting</h4></a></li>
                     </ul>
                     <div class="tab-content">
                         <!-- activities -->
                         <div class="tab-pane fade in active" id="all">
-                            {% for event in backend.users[user].events %}
-                              {% set event = backend.events[event]%}
-                              {% include 'event_tile.html' %}
-                            {% endfor %}
+                            {% if backend.users[user].events|length == 0 %}
+                            <div class="action-buttons center-block" style="width: 50% !important;">
+                              <br><br>
+                              <button class="btn btn-default btn-md btn-block" style="margin: auto;" onclick="window.location.href='/search'"><strong>Explore Happy Hours</strong></button>
+                            </div>
+                            {% else %}
+                              {% for event in backend.users[user].events %}
+                                {% set event = backend.events[event]%}
+                                {% include 'event_tile.html' %}
+                              {% endfor %}
+                            {% endif %}
                           </br>
-                        </br>
-                            <button type="button" class="btn btn-default center-block">Load more events</button>
+                          </br>
                         </div>
                         <!-- end activities -->
                         <!-- followers -->
                         <div class="tab-pane fade" id="followers">
-                          {% for event in backend.users[user].events %}
-                            {% set event = backend.events[event]%}
-                            {% if event.host != user %}
-                              {% include 'event_tile.html' %}
-                            {% endif %}
-                          {% endfor %}
+                          {% if backend.users[user].event|length == 0 %}
+                          <div class="action-buttons center-block" style="width: 50% !important;">
+                            <br><br>
+                            <button class="btn btn-default btn-md btn-block" style="margin: auto;" onclick="window.location.href='/search'"><strong>Explore Happy Hours</strong></button>
+                          </div>
+                          {% else %}
+                            {% for event in backend.users[user].events %}
+                              {% set event = backend.events[event]%}
+                              {% if event.host != user %}
+                                {% include 'event_tile.html' %}
+                              {% endif %}
+                            {% endfor %}
+                          {% endif %}
                         </br>
-                      </br>
-                          <button type="button" class="btn btn-default center-block">Load more events</button>
+                        </br>
                         </div>
                         <!-- end followers -->
                         <!-- following -->
                         <div class="tab-pane fade" id="following">
-                          {% for event in backend.users[user].events %}
-                            {% set event = backend.events[event]%}
-                            {% if event.host == user %}
-                              {% include 'event_tile.html' %}
-                            {% endif %}
-                          {% endfor %}
+                          {% if backend.users[user].event|length == 0 %}
+                          <div class="action-buttons center-block" style="width: 50% !important;">
+                            <br><br>
+                            <button class="btn btn-default btn-md btn-block" style="margin: auto;" onclick="window.location.href='/search'"><strong>Explore Happy Hours</strong></button>
+                          </div>
+                          {% else %}
+                            {% for event in backend.users[user].events %}
+                              {% set event = backend.events[event]%}
+                              {% if event.host == user %}
+                                {% include 'event_tile.html' %}
+                              {% endif %}
+                            {% endfor %}
+                          {% endif %}
                         </br>
-                      </br>
-                          <button type="button" class="btn btn-default center-block">Load more events</button>
+                        </br>
                         </div>
                         <!-- end following -->
                     </div>
@@ -158,4 +175,9 @@
     {% include 'edit_profile_modal.html' %}
     {% include 'new_event_modal.html'%}
   {% endif %}
+
+  {% include 'add_friend_modal.html' %}
+  {% include 'unfriend_modal.html' %}
+  {% include 'all_friends_modal.html' %}
+
 {% endblock %}
