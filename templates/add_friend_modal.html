@@ -12,7 +12,7 @@
       <div class="modal-body">
         <form method="post">
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">You and {{new_friend.name}} are now friends</label>
+            <label for="recipient-name" class="col-form-label">Would you like to friend {{new_friend.name}}?</label>
               {% set user = backend.users[backend.user] %}
               <input type="hidden" name="{{user.link}}friend" value="{{ new_friend.link }}">
           </div>

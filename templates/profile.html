@@ -128,7 +128,7 @@
                         <!-- end activities -->
                         <!-- followers -->
                         <div class="tab-pane fade" id="followers">
-                          {% if backend.users[user].event|length == 0 %}
+                          {% if backend.users[user].events|length == 0 %}
                           <div class="action-buttons center-block" style="width: 50% !important;">
                             <br><br>
                             <button class="btn btn-default btn-md btn-block" style="margin: auto;" onclick="window.location.href='/search'"><strong>Explore Happy Hours</strong></button>
@@ -147,7 +147,7 @@
                         <!-- end followers -->
                         <!-- following -->
                         <div class="tab-pane fade" id="following">
-                          {% if backend.users[user].event|length == 0 %}
+                          {% if backend.users[user].events|length == 0 %}
                           <div class="action-buttons center-block" style="width: 50% !important;">
                             <br><br>
                             <button class="btn btn-default btn-md btn-block" style="margin: auto;" onclick="window.location.href='/search'"><strong>Explore Happy Hours</strong></button>

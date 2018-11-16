@@ -108,11 +108,11 @@
                                      {% for attendee in event.attendees %}
                                        {% set user = backend.users[attendee] %}
                                        {% include 'user_tile.html' %}
-                                       <br>
+                                       {% if event.attendees|length > 1 %}
+                                        <br>
+                                       {% endif %}
                                      {% endfor %}
                                    {% endif %}
-																 </br>
-															 </br>
                                  </td>
                               </tr>
                               <tr class="divider">

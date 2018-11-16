@@ -1,6 +1,8 @@
 <div class="media user-following">
-    <img href="/{{ user.link }}" src="{{ user.picture }}" alt="User Avatar" class="media-object pull-left" style="width: 60px; height: 55px; border-color: black;">
-    <div class="media-body">
+    <a href="/{{ user.link }}">
+      <img src="{{ user.picture }}" alt="User Avatar" class="media-object pull-left" style="width: 60px; height: 55px; border-color: black;">
+    </a>
+    <div class="media-body" style="padding-left: 1em">
         <a href="/{{ user.link }}"><h5>{{ user.name }}</h5></a>
         {% if user.badges|length > 0 %}
           {% for i in range(4) %}
