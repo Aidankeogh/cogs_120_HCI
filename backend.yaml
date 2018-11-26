@@ -2,7 +2,7 @@ user: percy
 badges: [Faculty, Research, Clubs, Industry]
 logged_in: True
 badge_icons:
-- fa-chalkboard-teacher
+- fa-university
 - fa-flask
 - fa-users
 - fa-suitcase

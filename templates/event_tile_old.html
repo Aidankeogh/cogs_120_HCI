@@ -1,0 +1,43 @@
+<div class="media activity-item event_tile {% for i in range(4) %}{% if event.badge_counts[i] > 0 %} {{backend.badges[i]}}_tile{% endif %}{% endfor %}">
+    <a href="/{{ event.host }}" class="pull-left">
+        <img src="{{ backend.users[event.host].picture }}" alt="Avatar" class="media-object avatar">
+    </a>
+    <div class="media-body">
+        <a href = "/{{ event.link }}" style="font-weight: bold">
+        <stong>{{ event.title }} at {{ event.location }}</strong>
+        </button></a>
+        <h5 class="text-muted">{{ event.date }}</h5>
+
+        </br>
+        {{event.num_attendees}} <i class="fas fa-user"></i>
+        {% if event.friends > 0 %}
+          | {{event.friends}} <i class="fas fa-heart Friend"></i>
+        {% endif %}
+        {% for i in range(4) %}
+          {% if event.badge_counts[i] > 0 %}
+            | {{event.badge_counts[i]}} <i class="fas {{backend.badge_icons[i]}} {{backend.badges[i]}}" title="{{event.badge_counts[i]}} from {{backend.badges[i]}}"></i>
+          {% endif %}
+        {% endfor %}
+
+    <div class="btn-toolbar pull-right activity-actions inline-block">
+      {% if event.host == backend.user %}
+        <button type="button" data-toggle="modal" data-target="#{{ event.link }}EditModal" class="btn btn-md btn-light btn-block pull-right">
+          <span><span class="glyphicon glyphicon-edit"></span><strong> Edit </strong></span>
+        </button>&nbsp;
+        {% include 'edit_event_modal.html' %}
+      {% elif backend.user in event.attendees %}
+        <button type="button" data-toggle="modal" data-target="#{{ event.link }}Unattend" class="attend_btn btn btn-md btn-danger btn-block pull-right">
+          <span>
+          <span class="glyphicon glyphicon-exclamation-sign"></span><strong> Unattend </strong></span>
+        </button>&nbsp;
+        {% include 'unattend_event_modal.html' %}
+      {% else %}
+      <!-- Trigger the modal with a button -->
+        <button type="button" value="{{event.link}}" class="unattend_btn btn btn-md btn-success btn-block pull-right" data-toggle="modal" data-target="#{{ event.link }}Attend">
+          <span><span class="glyphicon glyphicon-check"></span><strong> Attend </strong></span>
+        </button>&nbsp;
+        {% include 'attend_event_modal.html' %}
+      {% endif %}
+    </div>
+    </div>
+</div>

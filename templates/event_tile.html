@@ -9,15 +9,81 @@
         <h5 class="text-muted">{{ event.date }}</h5>
 
         </br>
-        {{event.num_attendees}} <i class="fas fa-user"></i>
-        {% if event.friends > 0 %}
-          | {{event.friends}} <i class="fas fa-heart Friend"></i>
-        {% endif %}
-        {% for i in range(4) %}
-          {% if event.badge_counts[i] > 0 %}
-            | {{event.badge_counts[i]}} <i class="fas {{backend.badge_icons[i]}} {{backend.badges[i]}}" title="{{event.badge_counts[i]}} from {{backend.badges[i]}}"></i>
+
+        <button type="button" class="unattend_btn btn btn-md" style="border:1px solid;background-color:white;border-color:lightgray" data-toggle="collapse" data-target="#collapse{{ event.link }}" aria-expanded="false" aria-controls="collapseExample">
+          {{event.num_attendees}} <i class="fas fa-user"></i>
+          {% if event.friends > 0 %}
+            | {{event.friends}} <i class="fas fa-heart Friend"></i>
           {% endif %}
-        {% endfor %}
+          {% for i in range(4) %}
+            {% if event.badge_counts[i] > 0 %}
+              | {{event.badge_counts[i]}} <i class="fas {{backend.badge_icons[i]}} {{backend.badges[i]}}" title="{{event.badge_counts[i]}} from {{backend.badges[i]}}"></i>
+            {% endif %}
+          {% endfor %}
+          &nbsp;&nbsp;<i class="fas fa-angle-down"></i>
+        </button>
+        <div class="collapse" id="collapse{{ event.link }}">
+              <br>
+              <div class="row">
+                <div class="col-sm-2">
+                  <div style="text-align:center"><i class="fas fa-heart Friend"></i> Friends</div>
+                 <hr style="margin-top:2px;margin-bottom:8px">
+                 {% for attendee in event.attendees + [event.host] %}
+                  {% if attendee in backend.users[backend.user].friends%}
+                  &nbsp;&nbsp;&nbsp;&nbsp;<a href="/{{attendee}}"> {{backend.users[attendee].name}} </a>
+                  <br>
+                  {% endif %}
+                 {% endfor %}
+                </div>
+                <div class="col-sm-2">
+                  <div style="text-align:center"><i class="fas {{backend.badge_icons[0]}} {{backend.badges[0]}}"></i>
+                  Faculty</div>
+                  <hr style="margin-top:2px;margin-bottom:8px">
+                  {% for attendee in event.attendees + [event.host] %}
+                   {% if attendee in backend.users and backend.users[attendee].badges[0] is not none %}
+                   &nbsp;&nbsp;&nbsp;&nbsp;<a href="/{{attendee}}"> {{backend.users[attendee].name}} </a>
+                   <br>
+                   {% endif %}
+                  {% endfor %}
+                </div>
+                <div class="col-sm-2">
+                  <div style="text-align:center"><i class="fas {{backend.badge_icons[1]}} {{backend.badges[1]}}"></i>
+                  Researchers</div>
+                  <hr style="margin-top:2px;margin-bottom:8px">
+                  {% for attendee in event.attendees + [event.host] %}
+                   {% if attendee in backend.users and backend.users[attendee].badges[1] is not none %}
+                   &nbsp;&nbsp;&nbsp;&nbsp;<a href="/{{attendee}}"> {{backend.users[attendee].name}} </a>
+                   <br>
+                   {% endif %}
+                  {% endfor %}
+                </div>
+                <div class="col-sm-2">
+                  <div style="text-align:center"><i class="fas {{backend.badge_icons[2]}} {{backend.badges[2]}}"></i>
+                  Club leaders</div>
+                  <hr style="margin-top:2px;margin-bottom:8px">
+                  {% for attendee in event.attendees + [event.host] %}
+                   {% if attendee in backend.users and backend.users[attendee].badges[2] is not none %}
+                   &nbsp;&nbsp;&nbsp;&nbsp;<a href="/{{attendee}}"> {{backend.users[attendee].name}} </a>
+                   <br>
+                   {% endif %}
+                  {% endfor %}
+                </div>
+                <div class="col-sm-2">
+                  <div style="text-align:center"><i class="fas {{backend.badge_icons[3]}} {{backend.badges[3]}}"></i>
+                  Industry members</div>
+                  <hr style="margin-top:2px;margin-bottom:8px">
+                  {% for attendee in event.attendees + [event.host] %}
+                   {% if attendee in backend.users and backend.users[attendee].badges[3] is not none %}
+                   &nbsp;&nbsp;&nbsp;&nbsp;<a href="/{{attendee}}"> {{backend.users[attendee].name}} </a>
+                   <br>
+                   {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+              <br>
+                <button data-toggle="modal" data-target="#{{ event.link }}AllAttendeesModal"  class="btn btn-link btn-sm btn-block" style="margin: auto;">See All Attendees</button>
+                {% include 'all_attendees_modal.html' %}
+        </div>
 
     <div class="btn-toolbar pull-right activity-actions inline-block">
       {% if event.host == backend.user %}

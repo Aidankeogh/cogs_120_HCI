@@ -79,7 +79,11 @@
                         <div class="tab-pane fade in active" id="all">
                             {% for key in eventlist %}
                               {% set event = backend.events[key] %}
-                              {% include 'event_tile.html' %}
+                              {% if request.args.get('old') %}
+                                {% include 'event_tile_old.html'%}
+                              {% else %}
+                                {% include 'event_tile.html' %}
+                              {% endif %}
                             {% endfor %}
                             {% if eventlist|length == 0%}
                               <br><br>
