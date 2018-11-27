@@ -29,7 +29,7 @@
                   <div style="text-align:center"><i class="fas fa-heart Friend"></i> Friends</div>
                  <hr style="margin-top:2px;margin-bottom:8px">
                  {% for attendee in event.attendees + [event.host] %}
-                  {% if attendee in backend.users[backend.user].friends%}
+                  {% if backend.logged_in and attendee in backend.users[backend.user].friends%}
                   &nbsp;&nbsp;&nbsp;&nbsp;<a href="/{{attendee}}"> {{backend.users[attendee].name}} </a>
                   <br>
                   {% endif %}

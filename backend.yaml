@@ -1,83 +1,163 @@
-user: percy
-badges: [Faculty, Research, Clubs, Industry]
-logged_in: True
 badge_icons:
 - fa-university
 - fa-flask
 - fa-users
 - fa-suitcase
+badges:
+- Faculty
+- Research
+- Clubs
+- Industry
 events:
-  xyz:
-    title: Beer + Burgers
-    link: xyz
-    host: jane_doe
-    img_src: https://bootdey.com/img/Content/avatar/avatar1.png
-    attendees: [percy, john_doe]
-    date: Today 05:30 pm - 02.05.2014
-    location: Chicago Fire Grill
-    description: Burgers and beer at chicago fire
   abc:
-    title: Engineering Wine Society (EWS)
-    link: abc
-    host: jane_doe
-    img_src: https://bootdey.com/img/Content/avatar/avatar2.png
-    attendees: [john_doe, amanda]
+    attendees:
+    - john_doe
+    - amanda
+    - !!python/unicode ' + hello'
+    badge_counts:
+    - 1
+    - 1
+    - 0
+    - 1
     date: Tomorrow 08:00 pm - 02.06.2014
-    location: Rock Bottom
     description: Wine & Networking
+    friends: 0
+    host: jane_doe
+    hosting: false
+    img_src: https://bootdey.com/img/Content/avatar/avatar2.png
+    link: abc
+    location: Rock Bottom
+    num_attendees: 3
+    title: Engineering Wine Society (EWS)
   efg:
-    title: Cocktails
-    link: efg
-    host: percy
-    img_src: https://bootdey.com/img/Content/avatar/avatar3.png
-    attendees: [jane_doe, john_doe, amanda]
+    attendees:
+    - jane_doe
+    - john_doe
+    - amanda
+    badge_counts:
+    - 1
+    - 1
+    - 1
+    - 1
     date: Next Tuesday 04:30 pm - 02.10.2014
-    location: BJ's
     description: woof
+    friends: 0
+    host: percy
+    hosting: false
+    img_src: https://bootdey.com/img/Content/avatar/avatar3.png
+    link: efg
+    location: BJ's
+    num_attendees: 4
+    title: Cocktails
   ev4:
-    title: event4
-    link: ev4
-    host: john_doe
-    img_src: https://bootdey.com/img/Content/avatar/avatar5.png
-    attendees: [percy]
+    attendees:
+    - percy
+    badge_counts:
+    - 0
+    - 1
+    - 1
+    - 0
     date: Sometime
-    location: Somewhere
     description: Something
-
+    friends: 0
+    host: john_doe
+    hosting: false
+    img_src: https://bootdey.com/img/Content/avatar/avatar5.png
+    link: ev4
+    location: Somewhere
+    num_attendees: 2
+    title: event4
+  xyz:
+    attendees:
+    - percy
+    - john_doe
+    badge_counts:
+    - 1
+    - 1
+    - 1
+    - 0
+    date: Today 05:30 pm - 02.05.2014
+    description: Burgers and beer at chicago fire
+    friends: 0
+    host: jane_doe
+    hosting: false
+    img_src: https://bootdey.com/img/Content/avatar/avatar1.png
+    link: xyz
+    location: Chicago Fire Grill
+    num_attendees: 3
+    title: Beer + Burgers
+logged_in: false
+user: null
 users:
-  jane_doe:
-    name: Jane Doe
-    link: jane_doe
-    email: jane_doe@generic.com
-    badges: [CSE 190 professor,~,~,~]
-    friends: [percy,john_doe]
-    about: I am Jane Doe.
-    picture: https://bootdey.com/img/Content/avatar/avatar5.png
-    events: [xyz, abc, efg]
-  john_doe:
-    name: John Doe
-    link: john_doe
-    email: john_doe@generic.com
-    badges: [~,Deep learning researcher,~,~]
-    friends: [percy,jane_doe]
-    about: I am John Doe.
-    picture: https://bootdey.com/img/Content/avatar/avatar1.png
-    events: [efg, ev4, xyz, abc]
-  percy:
-    name: Percy
-    link: percy
-    email: percy@pal.dog
-    badges: [~,~,dog club,~]
-    friends: [john_doe,amanda]
-    about: I am a dog.
-    picture: /static/percy.jpg
-    events: [xyz, efg, ev4]
   amanda:
-    name: Amanda Smith
-    link: amanda
-    email: amand@s.mith
-    badges: [ ~, ~, ~, Recruiter at GAP]
-    friends: [percy,jane_doe]
     about: I am a dork.
+    badges:
+    - null
+    - null
+    - null
+    - Recruiter at GAP
+    email: amand@s.mith
+    events:
+    - efg
+    - abc
+    friends:
+    - percy
+    - jane_doe
+    link: amanda
+    name: Amanda Smith
     picture: https://bootdey.com/img/Content/avatar/avatar3.png
-    events: [efg, abc]
+  jane_doe:
+    about: I am Jane Doe.
+    badges:
+    - CSE 190 professor
+    - null
+    - null
+    - null
+    email: jane_doe@generic.com
+    events:
+    - xyz
+    - abc
+    - efg
+    friends:
+    - percy
+    - john_doe
+    link: jane_doe
+    name: Jane Doe
+    picture: https://bootdey.com/img/Content/avatar/avatar5.png
+  john_doe:
+    about: I am John Doe.
+    badges:
+    - null
+    - Deep learning researcher
+    - null
+    - null
+    email: john_doe@generic.com
+    events:
+    - efg
+    - ev4
+    - xyz
+    - abc
+    friends:
+    - percy
+    - jane_doe
+    link: john_doe
+    name: John Doe
+    picture: https://bootdey.com/img/Content/avatar/avatar1.png
+  percy:
+    about: I am a dog.
+    badges:
+    - null
+    - null
+    - dog club
+    - null
+    email: percy@pal.dog
+    events:
+    - xyz
+    - efg
+    - ev4
+    friends:
+    - john_doe
+    - amanda
+    link: percy
+    name: Percy
+    picture: /static/percy.jpg

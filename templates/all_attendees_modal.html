@@ -10,7 +10,7 @@
         </button>
       </div>
       <div class="modal-body">
-				{% for attendee in event.attendees %}
+				{% for attendee in [event.host] + event.attendees %}
           {% if attendee in backend.users %}
   					{% set user = backend.users[attendee] %}
   					{% include 'user_tile.html' %}
