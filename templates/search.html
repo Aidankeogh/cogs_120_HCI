@@ -68,6 +68,10 @@
                               <input type="checkbox" onchange="submit()" name = "f_industry" value="True" autocomplete="off" {% if request.args.get('f_industry') == 'True' %} checked {% endif %}>
                             <i class="fas {{backend.badge_icons[3]}} Industry"></i>
                             Industry members attending</label>
+
+                              {% if request.args.get('old') %}
+                                <input type="hidden" name = "old" value="True">
+                              {% endif %}
                           </form>
                           </li>
                       </ul>
