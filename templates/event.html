@@ -168,12 +168,12 @@
                                    {% elif backend.user in event.attendees %}
                                      <button type="button" data-toggle="modal" data-target="#{{ event.link }}Unattend" class="btn btn-md btn-danger width-150">
                                        <span>
-                                       <span class="glyphicon glyphicon-exclamation-sign"></span><strong> Unattend </strong></span>
+                                       <span class="glyphicon glyphicon-exclamation-sign"></span><strong> Unattend Happy Hour </strong></span>
                                      </button>&nbsp;
                                      {% include 'unattend_event_modal.html' %}
                                    {% else %}
                                      <button type="button" data-toggle="modal" data-target="#{{ event.link }}Attend" class="btn btn-md btn-toggle-following width-150"><span>
-                                       <span class="glyphicon glyphicon-check" style="vertical-align: center;"></span></span><strong> Attend </strong>
+                                       <span class="glyphicon glyphicon-check" style="vertical-align: center;"></span></span><strong> Go To Happy Hour </strong>
                                      </button>
                                      {% include 'attend_event_modal.html'%}
                                    {% endif%}

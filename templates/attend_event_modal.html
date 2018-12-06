@@ -14,12 +14,12 @@
         <form method="post">
           <div class="form-group">
             {% if backend.logged_in %}
-              <label for="recipient-name" class="col-form-label">Attend as:</label>
+              <label for="recipient-name" class="col-form-label">Attending as:</label>
               {% set user = backend.users[backend.user] %}
               {% include 'user_tile.html' %}
               <input type="hidden" name="{{event.link}}name" value="{{ backend.user }}">
             {% else %}
-              <label for="recipient-name" class="col-form-label">Attend as:</label>
+              <label for="recipient-name" class="col-form-label">Attending as:</label>
               <input type="text" name="{{event.link}}name" class="form-control" value="">
             {% endif %}
           </div>
@@ -27,7 +27,7 @@
       <div class="modal-footer">
         <div class="form-group pull-right">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" name="attend" value="{{event.link}}" class="btn btn-success">Attend event</button>
+          <button type="submit" name="attend" value="{{event.link}}" class="btn btn-success">Grab a drink!</button>
         </div>
       </form>
       </div>
